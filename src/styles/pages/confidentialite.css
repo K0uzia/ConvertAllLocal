@@ -6,7 +6,7 @@
   border-width: 0;
   font-family: var(--font-sans);
   color: var(--color-ink);
-  background-color: var(--color-surface);
+  background-color: transparent;
   transition: none;
   overflow: visible;
   z-index: auto;

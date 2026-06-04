@@ -1,8 +1,9 @@
 import { formatListStats, parseFormatsSource } from './format-parser.js';
 
-/** Formats documents courants (application desktop). */
+/** Formats documents : web = texte structuré (conversion sans perte de sens). */
 const DOCUMENTS_FORMATS_SOURCE = `
-.pdf* .docx* .doc* .odt* .md* .html* .rtf* .csv* .json* .epub*
+.md .html .htm .csv .json .txt .pdf
+.docx* .doc* .odt* .rtf* .epub*
 `;
 
 export const documentsFormats = parseFormatsSource(DOCUMENTS_FORMATS_SOURCE);

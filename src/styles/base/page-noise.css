@@ -4,15 +4,7 @@
  */
 
 .page-paper,
-body,
-main,
-.header,
-.footer,
-.hero,
-.how,
-.supports,
-.about,
-.privacy {
+html {
   background-image: var(--page-noise-pattern);
   background-repeat: repeat;
   background-size: var(--page-noise-pattern-size);
@@ -20,37 +12,21 @@ main,
   background-blend-mode: var(--page-noise-blend-modes);
 }
 
-body {
-  background-color: var(--color-canvas);
-}
-
-main,
-.header,
-.footer,
-.hero,
-.how,
-.supports,
-.about,
-.privacy {
+html {
   background-color: var(--color-surface);
 }
 
-.supports__switch,
+.supports__switch {
+  background-color: var(--color-surface);
+}
+
 .supports__tag {
-  background-color: var(--color-icon-bg);
+  background-color: var(--supports-tag-bg);
 }
 
 @media (prefers-contrast: more) {
   .page-paper,
-  body,
-  main,
-  .header,
-  .footer,
-  .hero,
-  .how,
-  .supports,
-  .about,
-  .privacy,
+  html,
   .supports__switch,
   .supports__tag {
     background-image: none;

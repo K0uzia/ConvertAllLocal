@@ -11,14 +11,18 @@
 
 /* Couleurs (tons papier légèrement chauds) */
 --color-canvas: #f0ebe3;
---color-surface: #f9f7f2;
+--color-surface: #e6e3d9;
+--color-header: #ffffff;
 --color-ink: #14171c;
---color-muted: #2e2f31;
+--color-muted: #171718;
 --color-line: #e5e7eb;
 --color-line-strong: #cbd5e1;
 --color-brand: #280a94;
---color-brand-hover: #1d4ed8;
+--color-brand-rgb: 40, 10, 148;
+--color-brand-hover: #5229e9;
 --color-on-brand: #ffffff;
+--color-success: #15803d;
+--color-error: #b91c1c;
 
   /* Texture papier / grain / quadrillage millimétré */
   --page-paper-ink: 32, 36, 44;
@@ -107,9 +111,11 @@
   --gap-header-end: calc(var(--head) / 2.667);
 
   /* Header */
-  --header-logo-icon: calc(var(--head) / 2);
+  --header-logo-icon: calc(var(--head) / 1.5);
   --header-cta-pad-y: calc(var(--head) / 10.24);
   --header-cta-pad-x: calc(var(--head) / 5.12);
+  --cta-icon-gap: calc(var(--head) / 16);
+  --cta-icon-shift: calc(var(--head) / 12.8);
 
   /* Hero (largeur du bloc texte selon l'écran, typo inchangée) */
   --hero-width: 100%;
@@ -130,16 +136,6 @@
   --hero-btn-pad-x: calc(var(--head) / 5.12);
   --radius-btn: calc(var(--head) / 16);
   --hero-rotate-duration: 5s;
-
-  /* Grille de points (titres de section, tailles entières pour des cercles nets) */
-  --title-dots-dot: 4px;
-  --title-dots-dot: round(calc(var(--head) / 22), 1px);
-  --title-dots-gap-x: 11px;
-  --title-dots-gap-x: round(calc(var(--head) / 8), 1px);
-  --title-dots-gap-y: 11px;
-  --title-dots-gap-y: round(calc(var(--head) / 8), 1px);
-  --title-dots-offset-x: calc(var(--head) / 2);
-  --title-dots-offset-y: calc(var(--head) / 5);
 
   /* How it works */
   --how-lead-size: var(--text-md);
@@ -186,6 +182,12 @@
   --supports-wheel-center-pad: calc(var(--head) / 3.2);
   --supports-wheel-duration: 0.8s;
   --supports-wheel-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --supports-wheel-pulse-spread-mid: calc(var(--head) / 10.667);
+  --supports-wheel-pulse-spread-end: calc(var(--head) / 6.4);
+  --supports-wheel-pulse-alpha-mid: 0.28;
+  --supports-wheel-track-hole-r: calc(
+    50 * (var(--supports-wheel-pill-size) / 2 + var(--head) / 8) / var(--supports-wheel-radius)
+  );
   --supports-wheel-panel-title-size: calc(var(--head) / 3.2);
   --supports-wheel-panel-lead-size: calc(var(--head) / 5.818);
   --supports-switch-track-pad: calc(var(--head) / 64);
@@ -211,7 +213,7 @@
   --supports-tag-pad-y: calc(var(--head) / 24);
   --supports-tag-pad-x: calc(var(--head) / 12.8);
   --supports-tag-radius: calc(var(--head) / 16);
-  --supports-tag-bg: var(--color-icon-bg);
+  --supports-tag-bg: var(--color-surface);
   --supports-tag-color: var(--color-ink);
   --supports-why-size: calc(var(--head) / 4.571);
 
@@ -226,6 +228,33 @@
   --about-problems-indent: calc(var(--head) / 2);
   --about-point-pad-y: calc(var(--head) / 1.6);
   --about-points-gap: calc(var(--head) / 1.6);
+
+  /* Converter */
+  --converter-max-width: calc(var(--container) * 0.72);
+  --converter-upload-min-h: calc(var(--head) * 5);
+  --converter-gap: calc(var(--head) / 1.25);
+  --converter-divider: var(--color-line);
+  --converter-shuffle-duration: 0.6s;
+  --converter-bar-pad: calc(var(--head) / 6.4);
+  --converter-file-border: 1px;
+  --converter-file-bg: var(--color-surface);
+  --converter-file-border-color: var(--color-line);
+  --converter-file-pad-y: calc(var(--head) / 9.6);
+  --converter-file-pad-x: calc(var(--head) / 8);
+  --converter-file-gap: calc(var(--head) / 7.68);
+  --converter-file-font: var(--text-md);
+  --converter-file-font-meta: var(--text-sm);
+  --converter-file-line: 1.4;
+  --converter-dropzone-filled-pad: calc(var(--head) / 6.4);
+  --converter-file-icon-box: calc(var(--head) / 1.92);
+  --converter-file-icon-size: calc(var(--head) / 3.2);
+  --converter-title-size: var(--text-md);
+  --converter-settings-radius: var(--radius-md);
+
+  /* Scrollbar (site, scroll sur body) */
+  --scrollbar-thumb: var(--color-brand);
+  --scrollbar-track: transparent;
+  --scrollbar-size: calc(var(--head) / 8);
 
   /* Transitions */
   --ease: 0.15s ease;

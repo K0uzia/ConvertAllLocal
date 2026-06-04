@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Converter from '../components/Converter/Converter.astro';
+import ConverterSettings from '../components/Converter/ConverterSettings.astro';
+import { brandName } from '../data/site';
+import '../styles/pages/convertir.css';
+---
+
+<Layout title={`Convertir - ${brandName}`}>
+  <div class="convertir-page">
+    <div class="convertir-page__container">
+      <header class="convertir-page__head">
+        <h1 class="convertir-page__title">
+          <i class="convertir-page__title-icon fa-solid fa-shuffle" aria-hidden="true"></i>
+          <span>Convertir</span>
+        </h1>
+        <p class="convertir-page__lead">
+          Conversion locale d'images, d'audio, de documents et de PDF dans votre navigateur. 24 Mo max
+          par lot, sans envoi sur un serveur : vos fichiers restent sur votre appareil.
+        </p>
+      </header>
+      <Converter />
+      <ConverterSettings />
+
+      <section class="convertir-page__limits" aria-labelledby="convertir-limits-title">
+        <h2 class="convertir-page__limits-title" id="convertir-limits-title">
+          <i class="convertir-page__title-icon fa-solid fa-gauge-high" aria-hidden="true"></i>
+          <span>Limites du convertisseur web</span>
+        </h2>
+        <p class="convertir-page__limits-lead">
+          Tout est traité dans votre navigateur, sans envoi sur un serveur. Tailles maximales
+          acceptées sur cette page :
+        </p>
+
+        <dl class="convertir-page__limits-grid">
+          <div class="convertir-page__limits-item">
+            <dt class="convertir-page__limits-term">Lot</dt>
+            <dd class="convertir-page__limits-detail">
+              <strong>24 Mo</strong>
+              <span class="convertir-page__limits-detail-extra">
+                (32 Mo si le navigateur signale au moins 8 Go de mémoire)
+              </span>
+            </dd>
+          </div>
+          <div class="convertir-page__limits-item">
+            <dt class="convertir-page__limits-term">Image, audio, PDF</dt>
+            <dd class="convertir-page__limits-detail"><strong>16 Mo</strong> par fichier</dd>
+          </div>
+          <div class="convertir-page__limits-item">
+            <dt class="convertir-page__limits-term">Documents texte</dt>
+            <dd class="convertir-page__limits-detail">
+              <strong>8 Mo</strong> par fichier
+              <span class="convertir-page__limits-detail-extra">(CSV, JSON, Markdown, HTML…)</span>
+            </dd>
+          </div>
+        </dl>
+
+        <p class="convertir-page__limits-note">
+          Ces plafonds limitent l'usage mémoire de l'onglet : file d'attente, résultat converti et
+          archive ZIP peuvent coexister en local. Ce n'est pas un plafond commercial, mais une
+          contrainte technique du navigateur.
+        </p>
+
+        <div class="convertir-page__limits-scope">
+          <div class="convertir-page__limits-scope-block">
+            <h3 class="convertir-page__limits-scope-title">
+              <i class="convertir-page__title-icon fa-solid fa-globe" aria-hidden="true"></i>
+              <span>Sur le site</span>
+            </h3>
+            <ul class="convertir-page__limits-scope-list">
+              <li>Créer un PDF depuis une image ou un texte</li>
+              <li>Extraire le texte d'un PDF (pages sélectionnables)</li>
+            </ul>
+          </div>
+          <div class="convertir-page__limits-scope-block">
+            <h3 class="convertir-page__limits-scope-title">
+              <i class="convertir-page__title-icon fa-solid fa-desktop" aria-hidden="true"></i>
+              <span>Application desktop (à venir)</span>
+            </h3>
+            <ul class="convertir-page__limits-scope-list">
+              <li>PDF scannés (OCR)</li>
+              <li>Fichiers Office</li>
+              <li>Vidéo</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

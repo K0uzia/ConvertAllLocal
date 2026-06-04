@@ -61,11 +61,11 @@ import { brandName, githubUrl, githubIssuesUrl } from '../data/site';
         <section class="privacy__section" aria-labelledby="privacy-storage">
           <h2 class="privacy__heading" id="privacy-storage">Stockage local</h2>
           <p>
-            Lorsque l'interface de conversion sera disponible, vos préférences pourront être
-            enregistrées dans le <strong>stockage local</strong> de votre navigateur
-            (<code>localStorage</code>). Les binaires WebAssembly des outils de conversion peuvent
-            être mis en cache localement lors de votre première visite, afin d'éviter de les
-            retélécharger à chaque fois. Aucune donnée personnelle n'est transmise avec ce cache.
+            Sur la page Convertir, vos préférences et la file d'attente peuvent être enregistrées
+            dans le <strong>stockage local</strong> du navigateur (<code>localStorage</code>,
+            <code>IndexedDB</code>). Les modules de conversion (WebAssembly images, PDF.js, jsPDF)
+            peuvent être mis en cache lors de la première utilisation. Aucun fichier n'est envoyé
+            sur un serveur ConvertAllLocal.
           </p>
           <p>
             Vous pouvez consulter ou supprimer ces données à tout moment via les paramètres de

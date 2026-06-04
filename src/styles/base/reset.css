@@ -147,6 +147,12 @@
   
   img {
     border-style: none;
+    overflow: clip;
+  }
+
+  video,
+  canvas {
+    overflow: clip;
   }
   
   /* Forms

@@ -18,7 +18,7 @@ ConvertAllLocal est un outil **gratuit et open source** (MIT) de conversion loca
 |---|------------------------|---------------------------|
 | Accès | Convertir sur le site | Téléchargement (Tauri, Linux/Windows) |
 | Données | Restent dans le navigateur | Restent sur votre machine |
-| Limites | Images uniquement, ≤ 12 Mo par fichier | Vidéo, batch, icônes, gros fichiers |
+| Limites | Images, audio, docs, PDF léger : lot 24 Mo, fichier 16 Mo (texte 8 Mo) | Vidéo, Office, OCR, gros fichiers |
 
 Les limites sur le web ne sont **pas** une version d'essai ou un modèle payant : c'est le **même outil**, avec les contraintes techniques du navigateur.
 
@@ -149,8 +149,8 @@ public/
 
 ## Formats convertibles
 
-**Site (navigateur)** : images seulement, **12 Mo max** par fichier, traitement local sans upload.  
-**Application** : vidéo, images, icônes, sans limite navigateur (moteurs à intégrer).
+**Site (navigateur)** : images, audio, documents texte et PDF limité, **24 Mo max par lot** (16 Mo par fichier image/audio/PDF, 8 Mo pour le texte), traitement local sans upload.  
+**Application** : vidéo, Office, icônes, sans limite navigateur (moteurs à intégrer).
 
 ### Vidéo
 
@@ -166,12 +166,12 @@ public/
 
 | Format | Usage principal | Site (navigateur) | Application |
 |--------|-------------------|-------------------|-------------|
-| **JPEG** | Photos | ✅ (≤12 Mo) | ✅ |
-| **PNG** | Logos, graphismes, icônes | ✅ (≤12 Mo) | ✅ |
-| **WebP** | Moderne optimisé | ✅ (≤12 Mo) | ✅ |
-| **AVIF** | Standard moderne | ✅ (≤12 Mo) | ✅ |
-| **GIF** | Animations courtes | ✅ (≤12 Mo) | ✅ |
-| **SVG** | UI responsive, icônes | ✅ (≤12 Mo) | ✅ |
+| **JPEG** | Photos | ✅ (lot 24 Mo) | ✅ |
+| **PNG** | Logos, graphismes, icônes | ✅ (lot 24 Mo) | ✅ |
+| **WebP** | Moderne optimisé | ✅ (lot 24 Mo) | ✅ |
+| **AVIF** | Standard moderne | ✅ (lot 24 Mo) | ✅ |
+| **GIF** | Animations courtes | ✅ (lot 24 Mo) | ✅ |
+| **SVG** | UI responsive, icônes | ✅ (lot 24 Mo) | ✅ |
 | **ICO** | Favicons, apps Windows | ❌ | ✅ |
 | **ICNS** | Icônes apps macOS | ❌ | ✅ |
 | **PNG 256×256** | Icônes apps Linux | ❌ | ✅ |

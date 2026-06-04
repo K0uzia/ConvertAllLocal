@@ -9,7 +9,7 @@ export const githubIssuesUrl = `${githubUrl}/issues`;
 
 /** Ancres de la page d'accueil (chemins absolus pour les pages secondaires). */
 export const homeSections = {
-  convertir: '/#convertir',
+  convertir: '/convertir',
   comment: '/#comment-convertir',
   formats: '/#formats',
   apropos: '/#apropos',

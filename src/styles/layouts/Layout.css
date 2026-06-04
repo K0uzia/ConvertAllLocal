@@ -1,15 +1,8 @@
 html {
   margin: 0;
   padding: 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-brand) transparent;
+  overflow: hidden;
   scroll-padding-top: var(--head);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
 }
 
 body {
@@ -18,6 +11,7 @@ body {
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;
+  max-height: var(--viewport);
   min-height: var(--viewport);
   margin: 0;
   padding: 0;
@@ -27,7 +21,7 @@ body {
   font-weight: var(--weight-normal);
   line-height: 1.5;
   color: var(--color-ink);
-  background-color: var(--color-canvas);
+  background-color: transparent;
   transition: none;
   overflow-x: hidden;
   overflow-y: auto;
@@ -50,8 +44,14 @@ main {
   border-width: 0;
   font-family: var(--font-sans);
   color: inherit;
-  background-color: var(--color-surface);
+  background-color: transparent;
   transition: none;
   overflow: visible;
   z-index: auto;
+}
+
+img,
+video,
+canvas {
+  overflow: clip;
 }

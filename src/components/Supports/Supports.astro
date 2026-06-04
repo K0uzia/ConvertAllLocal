@@ -1,6 +1,5 @@
 ---
 import './Supports.css';
-import Titled from '../Titled/Titled.astro';
 import {
   supportCategories,
   formatsForEnv,
@@ -16,8 +15,8 @@ const labelBoth = 'Site et Application';
 const categoryDescriptions: Record<SupportCategoryId, string> = {
   images: 'Photos et graphiques, du web au RAW professionnel.',
   video: 'Conteneurs vidéo via l\'application desktop.',
-  audio: 'Fichiers audio courants, directement dans le navigateur.',
-  documents: 'Documents bureautiques et exports texte en desktop.',
+  audio: 'WAV, MP3, OGG, Opus, M4A, AAC : conversion locale vers WAV, MP3 ou OGG (depuis MP3/WAV).',
+  documents: 'MD, HTML, CSV, JSON, TXT et PDF (export, texte structuré, HTML fidèle) sur le site. Office lourd en desktop.',
 };
 ---
 
@@ -25,9 +24,10 @@ const categoryDescriptions: Record<SupportCategoryId, string> = {
   <div class="supports__container">
     <div class="supports__layout">
       <header class="supports__header">
-        <Titled>
-          <h2 class="supports__title" id="supports-title">Formats pris en charge</h2>
-        </Titled>
+        <h2 class="supports__title" id="supports-title">
+          <i class="section-heading__icon fa-solid fa-table-cells-large" aria-hidden="true"></i>
+          <span>Formats pris en charge</span>
+        </h2>
         <p class="supports__intro">
           Le site et l'application desktop ne traitent pas exactement les mêmes types de fichiers. Le
           site est plus léger et convient pour l'usage courant, tandis que l'application desktop est
@@ -232,9 +232,28 @@ const categoryDescriptions: Record<SupportCategoryId, string> = {
           </div>
 
           <div class="supports__wheel-ring-wrap">
-            <div class="supports__wheel-track" aria-hidden="true"></div>
-            <div class="supports__wheel-slot" aria-hidden="true"></div>
             <div class="supports__wheel-ring" data-wheel-ring>
+              <svg class="supports__wheel-track" viewBox="-2 -2 104 104" aria-hidden="true">
+                <defs>
+                  <mask id="supports-wheel-track-cutout" maskUnits="userSpaceOnUse">
+                    <rect x="-2" y="-2" width="104" height="104" fill="white" />
+                    <circle class="supports__wheel-track-hole" cx="50" cy="0" fill="black" />
+                    <circle class="supports__wheel-track-hole" cx="100" cy="50" fill="black" />
+                    <circle class="supports__wheel-track-hole" cx="50" cy="100" fill="black" />
+                    <circle class="supports__wheel-track-hole" cx="0" cy="50" fill="black" />
+                  </mask>
+                </defs>
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="50"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  mask="url(#supports-wheel-track-cutout)"
+                  vector-effect="non-scaling-stroke"
+                />
+              </svg>
               {
                 supportCategories.map((category, index) => (
                   <button

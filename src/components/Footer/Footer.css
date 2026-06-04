@@ -7,7 +7,7 @@
   border-width: 0;
   font-family: var(--font-sans);
   color: var(--color-ink);
-  background-color: var(--color-surface);
+  background-color: transparent;
   transition: none;
   overflow: visible;
   z-index: auto;
@@ -111,9 +111,8 @@
   color: inherit;
   background: transparent;
   flex-shrink: 0;
+  overflow: clip;
   transition: none;
-  overflow: visible;
-  z-index: auto;
 }
 
 .footer__logo-text {

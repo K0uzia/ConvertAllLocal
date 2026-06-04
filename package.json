@@ -8,15 +8,29 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:clean": "rm -rf node_modules/.vite node_modules/.vite-convertalllocal node_modules/.astro && astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "dev:npx": "npx pnpm@10.12.1 dev",
-    "build:npx": "npx pnpm@10.12.1 build"
+    "build:npx": "npx pnpm@10.12.1 build",
+    "postinstall": "node scripts/sync-pdf-worker.mjs"
   },
   "dependencies": {
+    "@breezystack/lamejs": "1.2.7",
     "@fortawesome/fontawesome-free": "^7.2.0",
-    "astro": "^6.4.2"
+    "@jsquash/avif": "^2.1.1",
+    "@jsquash/jpeg": "^1.6.0",
+    "@jsquash/png": "^3.1.1",
+    "@jsquash/webp": "^1.5.0",
+    "@wasm-audio-decoders/ogg-vorbis": "0.1.20",
+    "astro": "^6.4.2",
+    "fflate": "^0.8.3",
+    "jspdf": "^4.2.1",
+    "marked": "^18.0.4",
+    "ogg-opus-decoder": "1.7.3",
+    "pdfjs-dist": "^6.0.227",
+    "wasm-media-encoders": "^0.7.0"
   },
   "packageManager": "pnpm@10.12.1"
 }

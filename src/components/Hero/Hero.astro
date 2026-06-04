@@ -3,7 +3,7 @@ import './Hero.css';
 import { homeSections } from '../../data/site';
 ---
 
-<section class="hero" id="convertir" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title">
   <div class="hero__container">
     <div class="hero__content">
       <h1 class="hero__title" id="hero-title">
@@ -30,7 +30,10 @@ import { homeSections } from '../../data/site';
       </p>
 
       <div class="hero__actions">
-        <a href={homeSections.convertir} class="hero__btn hero__btn--primary">Convertir maintenant</a>
+        <a href={homeSections.convertir} class="hero__btn hero__btn--primary">
+          Convertir
+          <i class="hero__btn-icon fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
         <a href={homeSections.formats} class="hero__btn hero__btn--secondary">Voir les formats</a>
       </div>
     </div>

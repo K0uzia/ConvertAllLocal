@@ -1,4 +1,14 @@
 @import url('./base/fontawesome.css');
+@import url('../components/Converter/Converter.css');
 @import url('./base/variables.css');
+@import url('./base/section-heading.css');
 @import url('./base/reset.css');
 @import url('./base/page-noise.css');
+@import url('./base/scrollbar.css');
+
+/* img / video / canvas : overflow visible est déprécié (Chrome) */
+img,
+video,
+canvas {
+  overflow: clip;
+}

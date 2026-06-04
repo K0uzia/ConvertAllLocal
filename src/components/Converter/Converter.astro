@@ -1,0 +1,106 @@
+---
+import { WEB_ACCEPT_ATTR } from '../../data/converter-limits';
+---
+
+<section class="converter" data-converter aria-labelledby="converter-upload-label">
+  <div class="converter__upload-block">
+    <div class="converter__upload">
+      <input
+        type="file"
+        id="converter-file-input"
+        class="converter__input"
+        multiple
+        accept={WEB_ACCEPT_ATTR}
+        data-converter-input
+      />
+      <div
+        class="converter__dropzone"
+        data-converter-dropzone
+        role="button"
+        tabindex="0"
+        aria-labelledby="converter-upload-label converter-upload-hint converter-dropzone-alert"
+      >
+        <p
+          class="converter__dropzone-alert"
+          id="converter-dropzone-alert"
+          data-converter-dropzone-alert
+          role="alert"
+          hidden
+        ></p>
+        <div class="converter__dropzone-empty" data-converter-dropzone-empty>
+          <p class="converter__dropzone-title" id="converter-upload-label">
+            Déposer des fichiers ou cliquer pour parcourir
+          </p>
+          <p class="converter__dropzone-hint" id="converter-upload-hint">
+            Images, audio, documents et PDF, en local dans le navigateur. 24 Mo max par lot (16 Mo
+            par fichier image/audio/PDF, 8 Mo pour le texte). Vidéo et Office lourd : application
+            desktop.
+          </p>
+        </div>
+        <ul class="converter__dropzone-files" data-converter-dropzone-files hidden></ul>
+        <div class="converter__dropzone-footer" data-converter-dropzone-footer hidden>
+          <p class="converter__dropzone-more" data-converter-dropzone-more>
+            Cliquer ou déposer pour ajouter d'autres fichiers
+          </p>
+          <div class="converter__dropzone-footer-actions">
+            <button type="button" class="converter__dropzone-clear" data-converter-clear-all>
+              Effacer tout
+            </button>
+            <button
+              type="button"
+              class="converter__dropzone-zip"
+              data-converter-download-zip
+              hidden
+            >
+              Tout télécharger (ZIP)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="converter__toolbar">
+    <div class="converter__meta" data-converter-meta>
+      <div class="converter__meta-row">
+        <span class="converter__meta-label">Formats détectés</span>
+        <span class="converter__meta-value" data-converter-format>Non détecté</span>
+      </div>
+      <div class="converter__meta-row">
+        <span class="converter__meta-label">Poids</span>
+        <span class="converter__meta-value" data-converter-weight>0 o / 24 Mo</span>
+      </div>
+      <div class="converter__meta-row converter__meta-row--queue">
+        <span class="converter__meta-label">File</span>
+        <span
+          class="converter__meta-value converter__files-live"
+          data-converter-files-live
+          aria-live="polite"
+        ></span>
+      </div>
+    </div>
+    
+    <div class="converter__controls">
+      <button type="button" class="converter__submit" data-converter-submit>
+        Convertir
+        <i class="converter__submit-icon fa-solid fa-shuffle" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  import { initConverterUi, resetConverterQueue } from './converter-ui.ts';
+
+  void initConverterUi();
+  document.addEventListener('astro:page-load', () => {
+    void initConverterUi();
+  });
+  document.addEventListener('cal:storage-cleared', () => {
+    void (async () => {
+      await resetConverterQueue();
+      await initConverterUi();
+    })();
+  });
+</script>

@@ -8,7 +8,7 @@
   border-width: 0;
   font-family: var(--font-sans);
   color: var(--color-ink);
-  background-color: var(--color-surface);
+  background-color: transparent;
   transition: none;
   overflow: visible;
   z-index: auto;
@@ -342,6 +342,7 @@
 }
 
 .hero__btn--primary {
+  gap: var(--cta-icon-gap);
   border-color: var(--color-brand);
   color: var(--color-on-brand);
   background: var(--color-brand);
@@ -351,6 +352,37 @@
   border-color: var(--color-brand-hover);
   color: var(--color-on-brand);
   background: var(--color-brand-hover);
+}
+
+.hero__btn-icon {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  font-size: 1em;
+  line-height: 1;
+  color: inherit;
+  background: transparent;
+  transform: translateX(0);
+  transition: transform var(--ease);
+  overflow: visible;
+  z-index: auto;
+}
+
+.hero__btn--primary:hover .hero__btn-icon {
+  transform: translateX(var(--cta-icon-shift));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__btn-icon {
+    transition: none;
+  }
+
+  .hero__btn--primary:hover .hero__btn-icon {
+    transform: translateX(0);
+  }
 }
 
 .hero__btn:focus-visible {
@@ -366,7 +398,8 @@
 }
 
 .hero__btn--secondary:hover {
-  border-color: var(--color-line-strong);
-  color: var(--color-ink);
-  background: var(--color-icon-bg);
+  border-color: var(--color-brand-hover);
+  border-width: 2px;
+  color: var(--color-brand-hover);
+  background: transparent;
 }
