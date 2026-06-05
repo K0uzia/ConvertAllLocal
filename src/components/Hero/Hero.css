@@ -7,11 +7,34 @@
   padding: 0;
   border-width: 0;
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  color: var(--color-title);
   background-color: transparent;
   transition: none;
-  overflow: visible;
+  overflow: hidden;
+  isolation: isolate;
   z-index: auto;
+}
+
+.hero__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--color-bg);
+  z-index: 0;
+}
+
+.hero__bg.finisher-header {
+  width: 100%;
+  height: 100%;
 }
 
 .hero__container {
@@ -19,6 +42,7 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  position: relative;
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
@@ -29,7 +53,7 @@
   background: transparent;
   transition: none;
   overflow: visible;
-  z-index: auto;
+  z-index: 1;
 }
 
 .hero__scroll {
@@ -48,23 +72,24 @@
   border-style: none;
   border-radius: 0;
   font-family: var(--font-sans);
-  color: var(--color-brand);
+  color: var(--color-accent);
   background: transparent;
   text-decoration: none;
   transform: translateX(-50%);
   transition: color var(--ease), box-shadow var(--ease);
   overflow: visible;
-  z-index: auto;
+  z-index: 1;
 }
 
 .hero__scroll:hover {
-  color: var(--color-brand-hover);
+  color: var(--color-accent-hover);
   background: transparent;
 }
 
 .hero__scroll:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 calc(var(--head) / 16) rgba(13, 148, 136, 0.18), var(--shadow-sm);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-sm);
 }
 
 .hero__scroll-ico {
@@ -138,7 +163,7 @@
   font-size: var(--text-hero);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
-  color: var(--color-ink);
+  color: var(--color-title);
   background: transparent;
   transition: none;
   overflow: visible;
@@ -153,7 +178,7 @@
 
 .hero__title-accent {
   font-weight: var(--weight-bold);
-  color: var(--color-brand);
+  color: var(--color-accent);
 }
 
 .hero__title-tail {
@@ -169,7 +194,7 @@
   padding: 0;
   border-width: 0;
   font-family: inherit;
-  color: var(--color-brand);
+  color: var(--color-accent);
   background: transparent;
   vertical-align: baseline;
   transition: none;
@@ -280,7 +305,7 @@
   font-size: var(--text-lead);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   text-wrap: pretty;
   transition: none;
@@ -343,15 +368,10 @@
 
 .hero__btn--primary {
   gap: var(--cta-icon-gap);
-  border-color: var(--color-brand);
-  color: var(--color-on-brand);
-  background: var(--color-brand);
 }
 
-.hero__btn--primary:hover {
-  border-color: var(--color-brand-hover);
-  color: var(--color-on-brand);
-  background: var(--color-brand-hover);
+.hero__btn--secondary {
+  border-width: 2px;
 }
 
 .hero__btn-icon {
@@ -386,20 +406,5 @@
 }
 
 .hero__btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 calc(var(--head) / 16) rgba(13, 148, 136, 0.18), var(--shadow-sm);
-}
-
-.hero__btn--secondary {
-  border-color: var(--color-brand);
-  border-width: 2px;
-  color: var(--color-brand);
-  background: transparent;
-}
-
-.hero__btn--secondary:hover {
-  border-color: var(--color-brand-hover);
-  border-width: 2px;
-  color: var(--color-brand-hover);
-  background: transparent;
+  box-shadow: var(--shadow-sm);
 }

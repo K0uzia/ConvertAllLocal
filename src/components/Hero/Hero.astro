@@ -1,9 +1,10 @@
 ---
 import './Hero.css';
-import { homeSections } from '../../data/site';
+import { assetUrl, homeSections } from '../../data/site';
 ---
 
 <section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg finisher-header" aria-hidden="true"></div>
   <div class="hero__container">
     <div class="hero__content">
       <h1 class="hero__title" id="hero-title">
@@ -30,11 +31,11 @@ import { homeSections } from '../../data/site';
       </p>
 
       <div class="hero__actions">
-        <a href={homeSections.convertir} class="hero__btn hero__btn--primary">
+        <a href={homeSections.convertir} class="btn btn--primary hero__btn hero__btn--primary">
           Convertir
           <i class="hero__btn-icon fa-solid fa-arrow-right-long" aria-hidden="true"></i>
         </a>
-        <a href={homeSections.formats} class="hero__btn hero__btn--secondary">Voir les formats</a>
+        <a href={homeSections.formats} class="btn btn--secondary hero__btn hero__btn--secondary">Voir les formats</a>
       </div>
     </div>
   </div>
@@ -67,3 +68,46 @@ import { homeSections } from '../../data/site';
     </svg>
   </a>
 </section>
+
+<script src={assetUrl('finisher-header.es5.min.js')} is:inline></script>
+<script is:inline>
+  (function () {
+    function initHeroFinisher() {
+      if (!document.querySelector('.hero .finisher-header')) return;
+      document.querySelector('#finisher-canvas')?.remove();
+      new FinisherHeader({
+        className: 'finisher-header',
+        count: 10,
+        size: {
+          min: 2,
+          max: 40,
+          pulse: 0,
+        },
+        speed: {
+          x: {
+            min: 0,
+            max: 0.8,
+          },
+          y: {
+            min: 0,
+            max: 0.2,
+          },
+        },
+        colors: {
+          background: getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim(),
+          particles: ['#ff926b', '#87ddfe', '#acaaff', '#1bffc2', '#f9a5fe'],
+        },
+        blending: 'screen',
+        opacity: {
+          center: 1,
+          edge: 1,
+        },
+        skew: -1.5,
+        shapes: ['t', 'c', 's'],
+      });
+    }
+
+    initHeroFinisher();
+    document.addEventListener('astro:page-load', initHeroFinisher);
+  })();
+</script>

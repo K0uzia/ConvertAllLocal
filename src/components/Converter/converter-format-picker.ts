@@ -221,8 +221,8 @@ function createFormatMenu(
   const trigger = document.createElement('button');
   trigger.type = 'button';
   trigger.className = isSettings
-    ? 'converter-settings__select converter-format-picker-trigger'
-    : 'converter__dropzone-file-output-trigger converter-format-picker-trigger';
+    ? 'btn btn--secondary converter-settings__select converter-format-picker-trigger'
+    : 'btn btn--secondary converter__dropzone-file-output-trigger converter-format-picker-trigger';
   trigger.id = config.id;
   trigger.setAttribute('aria-haspopup', 'listbox');
   trigger.setAttribute('aria-expanded', 'false');

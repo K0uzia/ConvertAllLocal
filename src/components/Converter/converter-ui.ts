@@ -807,7 +807,7 @@ function renderDropzoneFiles(
     downloadSlot.className = 'converter__dropzone-file-download-slot';
     if (item.status === 'success' && item.downloadUrl && item.downloadName) {
       const link = document.createElement('a');
-      link.className = 'converter__dropzone-file-download';
+      link.className = 'btn btn--primary converter__dropzone-file-download';
       link.href = item.downloadUrl;
       link.download = item.downloadName;
       link.setAttribute('aria-label', `Télécharger ${item.downloadName}`);

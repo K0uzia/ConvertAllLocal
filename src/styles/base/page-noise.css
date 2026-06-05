@@ -1,35 +1,16 @@
 /**
- * Texture papier : grain fin, fibres, lavis chaud.
- * Intégré au fond (background-image), jamais au-dessus du texte.
+ * Fond de page uni.
  */
 
 .page-paper,
 html {
-  background-image: var(--page-noise-pattern);
-  background-repeat: repeat;
-  background-size: var(--page-noise-pattern-size);
-  background-position: var(--page-noise-pattern-position);
-  background-blend-mode: var(--page-noise-blend-modes);
-}
-
-html {
-  background-color: var(--color-surface);
+  background-color: var(--color-bg);
 }
 
 .supports__switch {
-  background-color: var(--color-surface);
+  background-color: var(--color-bg);
 }
 
 .supports__tag {
-  background-color: var(--supports-tag-bg);
-}
-
-@media (prefers-contrast: more) {
-  .page-paper,
-  html,
-  .supports__switch,
-  .supports__tag {
-    background-image: none;
-    background-blend-mode: normal;
-  }
+  background-color: var(--color-bg);
 }

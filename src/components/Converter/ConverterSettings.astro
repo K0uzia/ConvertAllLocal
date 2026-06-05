@@ -38,7 +38,7 @@ import './ConverterSettings.css';
               <div data-settings-output-picker="image"></div>
               <button
                 type="button"
-                class="converter-settings__btn"
+                class="btn btn--secondary converter-settings__btn"
                 data-settings-reset-output="image"
                 aria-label="Réinitialiser le format image par défaut"
               >
@@ -57,7 +57,7 @@ import './ConverterSettings.css';
               <div data-settings-output-picker="audio"></div>
               <button
                 type="button"
-                class="converter-settings__btn"
+                class="btn btn--secondary converter-settings__btn"
                 data-settings-reset-output="audio"
                 aria-label="Réinitialiser le format audio par défaut"
               >
@@ -76,7 +76,7 @@ import './ConverterSettings.css';
               <div data-settings-output-picker="document"></div>
               <button
                 type="button"
-                class="converter-settings__btn"
+                class="btn btn--secondary converter-settings__btn"
                 data-settings-reset-output="document"
                 aria-label="Réinitialiser le format document par défaut"
               >
@@ -96,7 +96,7 @@ import './ConverterSettings.css';
             <div class="converter-settings__action-slot">
               <button
                 type="button"
-                class="converter-settings__btn"
+                class="btn btn--secondary converter-settings__btn"
                 data-settings-clear-storage
                 aria-label="Effacer toutes les données mémorisées par ConvertAllLocal sur cet appareil"
               >
@@ -108,6 +108,40 @@ import './ConverterSettings.css';
       </tbody>
     </table>
   </div>
+
+  <dialog
+    class="converter-settings__modal"
+    data-settings-clear-modal
+    aria-labelledby="converter-settings-clear-title"
+    aria-describedby="converter-settings-clear-desc"
+  >
+    <div class="converter-settings__modal-panel">
+      <h3 class="converter-settings__modal-title" id="converter-settings-clear-title">
+        <i class="converter-settings__modal-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+        <span>Effacer la mémoire locale ?</span>
+      </h3>
+      <p class="converter-settings__modal-text" id="converter-settings-clear-desc">
+        Tous les réglages et la file mémorisés par ConvertAllLocal sur cet appareil seront supprimés.
+        Cette action est irréversible.
+      </p>
+      <div class="converter-settings__modal-actions">
+        <button
+          type="button"
+          class="btn btn--secondary converter-settings__btn converter-settings__modal-btn"
+          data-settings-clear-cancel
+        >
+          Annuler
+        </button>
+        <button
+          type="button"
+          class="btn btn--secondary converter-settings__btn converter-settings__btn--danger converter-settings__modal-btn"
+          data-settings-clear-confirm
+        >
+          Effacer tout
+        </button>
+      </div>
+    </div>
+  </dialog>
 </section>
 
 <script>

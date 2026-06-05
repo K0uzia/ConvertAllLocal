@@ -1,0 +1,53 @@
+/**
+ * Boutons partagés (couleurs via --btn-primary-* / --btn-secondary-* dans variables.css).
+ * Les composants ajoutent leurs classes de mise en page (padding, rayon, etc.).
+ */
+
+.btn {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  border-width: 1px;
+  border-style: solid;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-tight);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--ease),
+    color var(--ease),
+    border-color var(--ease);
+}
+
+.btn--primary {
+  border-color: var(--btn-primary-border);
+  color: var(--btn-primary-fg);
+  background: var(--btn-primary-bg);
+}
+
+.btn--primary:hover {
+  border-color: var(--btn-primary-border-hover);
+  color: var(--btn-primary-fg-hover);
+  background: var(--btn-primary-bg-hover);
+}
+
+.btn--secondary {
+  border-color: var(--btn-secondary-border);
+  color: var(--btn-secondary-fg);
+  background: var(--btn-secondary-bg);
+}
+
+.btn--secondary:hover {
+  border-color: var(--btn-secondary-border-hover);
+  color: var(--btn-secondary-fg-hover);
+  background: var(--btn-secondary-bg-hover);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

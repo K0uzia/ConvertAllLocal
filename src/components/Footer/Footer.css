@@ -6,7 +6,7 @@
   padding: calc(var(--head) / 2) 0;
   border-width: 0;
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  color: var(--color-title);
   background-color: transparent;
   transition: none;
   overflow: visible;
@@ -88,7 +88,7 @@
   font-size: var(--text-logo);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
-  color: var(--color-brand);
+  color: var(--color-accent);
   background: transparent;
   text-decoration: none;
   transition: color var(--ease);
@@ -97,7 +97,7 @@
 }
 
 .footer__logo:hover {
-  color: var(--color-brand-hover);
+  color: var(--color-accent-hover);
 }
 
 .footer__logo-icon {
@@ -122,7 +122,7 @@
   padding: 0;
   border-width: 0;
   font-family: inherit;
-  color: var(--color-ink);
+  color: var(--color-title);
   background: transparent;
   transition: none;
   overflow: visible;
@@ -139,7 +139,7 @@
   font-size: var(--text-sm);
   font-weight: var(--weight-normal);
   line-height: 1.5;
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   transition: none;
   overflow: visible;
@@ -181,7 +181,7 @@
   padding: 0;
   border-width: 0;
   font-family: var(--font-sans);
-  color: var(--color-brand);
+  color: var(--color-accent);
   background: transparent;
   text-decoration: none;
   transition: color var(--ease);
@@ -190,12 +190,12 @@
 }
 
 .footer__icon-link:hover {
-  color: var(--color-brand-hover);
+  color: var(--color-accent-hover);
 }
 
 .footer__icon-link:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 calc(var(--head) / 16) rgba(37, 99, 235, 0.45);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .footer__icon {
@@ -223,7 +223,7 @@
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: 1.5;
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   text-decoration: none;
   transition: color var(--ease);
@@ -232,10 +232,10 @@
 }
 
 .footer__text-link:hover {
-  color: var(--color-brand);
+  color: var(--color-accent);
 }
 
 .footer__text-link:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 calc(var(--head) / 16) rgba(37, 99, 235, 0.45);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

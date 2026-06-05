@@ -92,6 +92,9 @@ export async function initConverterSettings(): Promise<void> {
     snapshot?.items.filter((item) => item.status === 'queued' || item.status === 'error').length ??
     0;
   const clearStorageBtn = root.querySelector<HTMLButtonElement>('[data-settings-clear-storage]');
+  const clearModal = root.querySelector<HTMLDialogElement>('[data-settings-clear-modal]');
+  const clearConfirmBtn = root.querySelector<HTMLButtonElement>('[data-settings-clear-confirm]');
+  const clearCancelBtn = root.querySelector<HTMLButtonElement>('[data-settings-clear-cancel]');
 
   const appendStorageCountPart = (
     parent: HTMLElement,
@@ -166,12 +169,7 @@ export async function initConverterSettings(): Promise<void> {
     });
   }
 
-  clearStorageBtn?.addEventListener('click', () => {
-    const confirmed = window.confirm(
-      'Effacer tous les réglages et la file mémorisés par ConvertAllLocal sur cet appareil ?',
-    );
-    if (!confirmed) return;
-
+  const runClearStorage = (): void => {
     clearAll();
     void (async () => {
       await deleteQueueDatabase();
@@ -181,6 +179,19 @@ export async function initConverterSettings(): Promise<void> {
       await refresh();
       document.dispatchEvent(new CustomEvent('cal:storage-cleared'));
     })();
+  };
+
+  clearStorageBtn?.addEventListener('click', () => {
+    clearModal?.showModal();
+  });
+
+  clearCancelBtn?.addEventListener('click', () => {
+    clearModal?.close();
+  });
+
+  clearConfirmBtn?.addEventListener('click', () => {
+    clearModal?.close();
+    runClearStorage();
   });
 
   void refresh();

@@ -5,7 +5,7 @@
   padding: calc(var(--head) * 1) 0;
   border-width: 0;
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  color: var(--color-title);
   background-color: transparent;
   transition: none;
   overflow: visible;
@@ -85,7 +85,7 @@
   font-size: calc(var(--head) / 1.6);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
-  color: var(--color-ink);
+  color: var(--color-title);
   background: transparent;
   transition: none;
   overflow: visible;
@@ -103,7 +103,7 @@
   font-size: var(--how-lead-size);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   transition: none;
   overflow: visible;
@@ -198,12 +198,12 @@
   padding: 0;
   border-width: 2px;
   border-style: dashed;
-  border-color: var(--color-brand);
+  border-color: var(--color-accent);
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
   font-size: calc(var(--head) / 2.667);
   line-height: 1;
-  color: var(--color-brand);
+  color: var(--color-accent);
   background: transparent;
   grid-column: 1;
   grid-row: 1;
@@ -245,7 +245,7 @@
   font-size: var(--how-step-title-size);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
-  color: var(--color-ink);
+  color: var(--color-title);
   background: transparent;
   text-align: left;
   transition: none;
@@ -263,7 +263,7 @@
   font-size: var(--how-step-text-size);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   text-align: left;
   text-wrap: pretty;
@@ -281,7 +281,7 @@
   padding: 0 calc(var(--head) / 10.667);
   border-width: 0;
   font-family: var(--font-sans);
-  color: var(--color-brand);
+  color: var(--color-accent);
   background: transparent;
   box-sizing: content-box;
   transition: none;

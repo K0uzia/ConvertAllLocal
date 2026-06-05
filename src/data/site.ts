@@ -10,7 +10,7 @@ export const siteUrl = 'https://k0uzia.github.io/ConvertAllLocal';
 /** Préfixe de déploiement Astro (`/ConvertAllLocal/` sur GitHub Pages, `/` en racine). */
 export const basePath = import.meta.env.BASE_URL;
 
-/** URL d'un asset dans `public/` (grain, logo, favicon…). */
+/** URL d'un asset dans `public/` (logo, favicon…). */
 export function assetUrl(path: string): string {
   const slug = path.replace(/^\//, '');
   return `${basePath}${slug}`;

@@ -5,7 +5,7 @@
   padding: 0 0 calc(var(--head) * 1) 0;
   border-width: 0;
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  color: var(--color-title);
   background-color: transparent;
   transition: none;
   overflow: visible;
@@ -85,7 +85,7 @@
   font-size: var(--about-title-size);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
-  color: var(--color-ink);
+  color: var(--color-title);
   background: transparent;
   transition: none;
   overflow: visible;
@@ -102,7 +102,7 @@
   font-size: var(--about-aside-text-size);
   font-weight: var(--weight-normal);
   line-height: var(--about-aside-line-height);
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   text-wrap: pretty;
   overflow-wrap: break-word;
@@ -126,7 +126,7 @@
   font-size: var(--about-aside-text-size);
   font-weight: var(--weight-normal);
   line-height: var(--about-aside-line-height);
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   transition: none;
   overflow: visible;
@@ -141,7 +141,7 @@
 .about__problems strong,
 .about__point-text strong {
   font-weight: var(--weight-bold);
-  color: var(--color-ink);
+  color: var(--color-title);
 }
 
 .about__points {
@@ -195,7 +195,7 @@
   padding-top: var(--about-point-pad-y);
   border-width: 2px 0 0 0;
   border-style: solid;
-  border-color: var(--color-brand);
+  border-color: var(--color-accent);
 }
 
 @media (min-width: 768px) {
@@ -203,7 +203,7 @@
     padding-top: 0;
     padding-left: calc(var(--head) / 2);
     border-width: 0 0 0 1px;
-    border-color: var(--color-brand);
+    border-color: var(--color-accent);
   }
 }
 
@@ -236,7 +236,7 @@
   font-size: calc(var(--head) / 1.6);
   font-weight: 800;
   line-height: 1;
-  color: var(--color-brand);
+  color: var(--color-accent);
   background: transparent;
   grid-column: 1;
   grid-row: 1;
@@ -256,7 +256,7 @@
   font-size: var(--text-lead);
   font-weight: var(--weight-bold);
   line-height: 1.6;
-  color: var(--color-ink);
+  color: var(--color-title);
   background: transparent;
   text-align: left;
   grid-column: 2;
@@ -277,7 +277,7 @@
   font-size: var(--text-md);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
-  color: var(--color-muted);
+  color: var(--color-text);
   background: transparent;
   text-align: left;
   text-wrap: pretty;

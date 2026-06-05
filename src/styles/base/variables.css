@@ -9,55 +9,38 @@
   --head: 64px;
   --container: 80rem;
 
-/* Couleurs (tons papier légèrement chauds) */
---color-canvas: #f0ebe3;
---color-surface: #e6e3d9;
---color-header: #ffffff;
---color-ink: #14171c;
---color-muted: #171718;
---color-line: #e5e7eb;
---color-line-strong: #cbd5e1;
---color-brand: #280a94;
---color-brand-rgb: 40, 10, 148;
---color-brand-hover: #5229e9;
---color-on-brand: #ffffff;
---color-success: #15803d;
---color-error: #b91c1c;
+  /* Couleurs du thème (seule source de hex)
+     bg : fond de page et panneaux
+     text : corps de texte
+     title : titres, labels forts, nav active
+     accent / accent-hover : boutons, liens, bordures, éléments à mettre en avant
+     waiting : file en attente
+     success / error : états de conversion terminés ou en échec */
+  --color-bg: #15182e;
+  --color-text: #ffffff;
+  --color-title: #ffffff;
+  --color-accent: #ffb703;
+  --color-accent-hover: #e8a84d;
+  --color-waiting: #cbcccf;
+  --color-success: #abd1c6;
+  --color-error: #e05252;
 
-  /* Texture papier : grain fin, fibres, lavis chaud */
-  --page-paper-ink: 32, 36, 44;
-  --page-noise-size: 256px;
-  --page-noise-fiber-size: 384px;
-  --page-noise-fallback-alpha: 0.09;
-  /* --page-noise-image et --page-noise-fiber-image : définis dans Layout.astro (base Astro) */
-  --page-paper-wash-alpha: 0.35;
-  --page-noise-pattern:
-    var(--page-noise-image),
-    var(--page-noise-fiber-image),
-    repeating-radial-gradient(
-      circle at 14% 18%,
-      rgba(var(--page-paper-ink), var(--page-noise-fallback-alpha)) 0 0.5px,
-      transparent 0.5px 2.25px
-    ),
-    repeating-radial-gradient(
-      circle at 78% 64%,
-      rgba(var(--page-paper-ink), calc(var(--page-noise-fallback-alpha) * 0.75)) 0 0.4px,
-      transparent 0.4px 2.75px
-    ),
-    linear-gradient(
-      165deg,
-      rgba(255, 252, 246, var(--page-paper-wash-alpha)) 0%,
-      rgba(248, 244, 236, 0) 42%,
-      rgba(235, 228, 216, calc(var(--page-paper-wash-alpha) * 0.45)) 100%
-    );
-  --page-noise-pattern-size:
-    var(--page-noise-size) var(--page-noise-size),
-    var(--page-noise-fiber-size) var(--page-noise-fiber-size),
-    2.25px 2.25px,
-    2.75px 2.75px,
-    100% 100%;
-  --page-noise-pattern-position: 0 0, 0 0, 0 0, 0 0, 0 0;
-  --page-noise-blend-modes: normal, normal, normal, normal, soft-light;
+  /* Boutons primary / secondary (référence : hero) */
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-fg: var(--color-bg);
+  --btn-primary-border: var(--color-accent);
+  --btn-primary-bg-hover: var(--color-accent-hover);
+  --btn-primary-fg-hover: var(--color-bg);
+  --btn-primary-border-hover: var(--color-accent-hover);
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-fg: var(--color-accent);
+  --btn-secondary-border: var(--color-accent);
+  --btn-secondary-bg-hover: transparent;
+  --btn-secondary-fg-hover: var(--color-accent-hover);
+  --btn-secondary-border-hover: var(--color-accent-hover);
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, var(--color-bg) 20%, transparent);
 
   /* Typographie */
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -71,7 +54,6 @@
 
   /* Rayons, ombres */
   --radius-md: calc(var(--head) / 10.667);
-  --shadow-sm: 0 1px 2px rgba(20, 23, 28, 0.05);
 
   /* Espacements dérivés de --head */
   --pad-x: calc(var(--head) / 4);
@@ -118,9 +100,6 @@
   --how-step-col-max: 21rem;
   --how-arrow-col: calc(var(--head) / 1.45);
   --how-row-gap: calc(var(--head) / 1.6);
-  --color-brand-muted: #e6f7f5;
-  --color-brand-subtle: #f0faf9;
-  --color-icon-bg: #ebe6dc;
 
   /* Typographie technique (extensions) */
   --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
@@ -155,16 +134,12 @@
   --supports-wheel-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --supports-wheel-pulse-spread-mid: calc(var(--head) / 10.667);
   --supports-wheel-pulse-spread-end: calc(var(--head) / 6.4);
-  --supports-wheel-pulse-alpha-mid: 0.28;
   --supports-wheel-track-hole-r: calc(
     50 * (var(--supports-wheel-pill-size) / 2 + var(--head) / 8) / var(--supports-wheel-radius)
   );
   --supports-wheel-panel-title-size: calc(var(--head) / 3.2);
   --supports-wheel-panel-lead-size: calc(var(--head) / 5.818);
   --supports-switch-track-pad: calc(var(--head) / 64);
-  --supports-icon-bg: var(--color-icon-bg);
-  --supports-icon-color: var(--color-ink);
-  --supports-switch-bg: var(--color-icon-bg);
   --supports-switch-radius: calc(var(--head) / 8);
   --supports-switch-btn-pad-y: calc(var(--head) / 12.8);
   --supports-switch-btn-pad-x: calc(var(--head) / 8);
@@ -177,15 +152,12 @@
   --supports-formats-body-h: calc(var(--head) * 2.25);
   --supports-formats-label-size: calc(var(--head) / 4.571);
   --supports-formats-body-pad: calc(var(--head) / 6.4);
-  --supports-formats-border: var(--color-line);
   --supports-formats-radius: calc(var(--head) / 10.667);
   --supports-tag-gap: calc(var(--head) / 16);
   --supports-tag-size: calc(var(--head) / 5.818);
   --supports-tag-pad-y: calc(var(--head) / 24);
   --supports-tag-pad-x: calc(var(--head) / 12.8);
   --supports-tag-radius: calc(var(--head) / 16);
-  --supports-tag-bg: var(--color-surface);
-  --supports-tag-color: var(--color-ink);
   --supports-why-size: calc(var(--head) / 4.571);
 
   /* About */
@@ -204,21 +176,9 @@
   --converter-max-width: calc(var(--container) * 0.72);
   --converter-upload-min-h: calc(var(--head) * 5);
   --converter-gap: calc(var(--head) / 1.25);
-  --converter-divider: var(--color-line);
   --converter-shuffle-duration: 0.6s;
   --converter-bar-pad: calc(var(--head) / 6.4);
   --converter-file-border: 1px;
-  --converter-file-bg: var(--color-surface);
-  --converter-file-row-bg: #d9d3c7;
-  --converter-file-row-bg-hover: #d0c9bc;
-  --converter-file-row-fg-secondary: rgba(32, 36, 44, 0.78);
-  --converter-file-row-fg-label: rgba(32, 36, 44, 0.62);
-  --converter-file-row-separator: rgba(32, 36, 44, 0.22);
-  --converter-file-row-inset-bg: rgba(240, 235, 227, 0.72);
-  --converter-file-row-success-bg: #cfd8c8;
-  --converter-file-row-error-bg: #dccfcc;
-  --converter-file-row-converting-bg: #ccc6d4;
-  --converter-file-border-color: var(--color-line);
   --converter-file-pad-y: calc(var(--head) / 9.6);
   --converter-file-pad-x: calc(var(--head) / 8);
   --converter-file-gap: calc(var(--head) / 7.68);
@@ -230,9 +190,14 @@
   --converter-file-icon-size: calc(var(--head) / 3.2);
   --converter-title-size: var(--text-md);
   --converter-settings-radius: var(--radius-md);
+  --converter-dropdown-chevron-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='currentColor' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --converter-modal-max-width: calc(var(--head) * 9);
+  --converter-modal-pad: calc(var(--head) / 2);
+  --converter-modal-gap: calc(var(--head) / 3.2);
+  --converter-modal-title-size: calc(var(--head) / 2.667);
+  --converter-modal-text-size: var(--text-sm);
 
   /* Scrollbar (site, scroll sur body) */
-  --scrollbar-thumb: var(--color-brand);
   --scrollbar-track: transparent;
   --scrollbar-size: calc(var(--head) / 8);
 

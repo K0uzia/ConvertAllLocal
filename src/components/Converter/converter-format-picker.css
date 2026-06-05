@@ -12,13 +12,10 @@
   box-sizing: border-box;
   height: var(--converter-file-control-h);
   min-height: var(--converter-file-control-h);
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(var(--color-brand-rgb), 0.52);
   border-radius: var(--converter-settings-radius);
-  background-color: #f5f2ec;
+  background-color: var(--color-bg);
   overflow: visible;
-  box-shadow: 0 1px 0 rgba(var(--page-paper-ink), 0.06);
+  box-shadow: 0 1px 0 var(--shadow-sm);
 }
 
 .converter__dropzone-file-field--format .converter__dropzone-file-field-label {
@@ -30,13 +27,13 @@
   border-width: 0;
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: rgba(var(--color-brand-rgb), 0.3);
-  background-color: rgba(var(--color-brand-rgb), 0.1);
+  border-right-color: var(--btn-secondary-border);
+  background-color: color-mix(in srgb, var(--btn-secondary-fg) 10%, transparent);
   font-size: calc(var(--head) / 6.6);
   font-weight: var(--weight-bold);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-brand);
+  color: var(--color-title);
 }
 
 .converter__dropzone-file-format-menu {
@@ -52,26 +49,19 @@
 }
 
 .converter__dropzone-file-output-trigger {
-  display: inline-flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: calc(var(--head) / 14);
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0 calc(var(--head) / 11) 0 calc(var(--head) / 11);
+  padding: 0 calc(var(--head) / 11);
   border-width: 0;
   border-radius: 0;
   font-family: var(--font-sans);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-bold);
   line-height: 1;
-  color: var(--color-brand);
-  background-color: transparent;
-  cursor: pointer;
-  transition: color var(--ease);
+  justify-content: space-between;
+  gap: calc(var(--head) / 14);
 }
 
 .converter__dropzone-file-output-value {
@@ -86,14 +76,14 @@
   width: 100%;
   height: 100%;
   padding: 0 calc(var(--head) / 11);
-  color: var(--color-brand);
 }
 
 .converter__dropzone-file-output-chevron {
   flex-shrink: 0;
   font-size: 0.72em;
   line-height: 1;
-  opacity: 0.85;
+  color: inherit;
+  opacity: 0.75;
   pointer-events: none;
   transition: transform var(--ease);
 }
@@ -115,14 +105,14 @@
   padding: calc(var(--head) / 18);
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(var(--color-brand-rgb), 0.45);
+  border-color: var(--btn-secondary-border);
   border-radius: var(--converter-settings-radius);
   list-style: none;
   font-family: var(--font-sans);
-  background-color: #f8f6f1;
+  background-color: var(--color-bg);
   box-shadow:
-    0 calc(var(--head) / 14) calc(var(--head) / 5) rgba(var(--page-paper-ink), 0.12),
-    0 0 0 1px rgba(var(--color-brand-rgb), 0.06);
+    0 calc(var(--head) / 14) calc(var(--head) / 5) var(--shadow-sm),
+    0 0 0 1px color-mix(in srgb, var(--btn-secondary-border) 8%, transparent);
   max-height: calc(var(--head) * 2.75);
   overflow-x: hidden;
   overflow-y: auto;
@@ -141,7 +131,7 @@
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-medium);
   line-height: var(--line-tight);
-  color: var(--color-ink);
+  color: var(--color-text);
   cursor: pointer;
   transition:
     background-color var(--ease),
@@ -150,31 +140,18 @@
 
 .converter__dropzone-file-output-option:hover,
 .converter__dropzone-file-output-option:focus-visible {
-  color: var(--color-brand);
-  background-color: rgba(var(--color-brand-rgb), 0.08);
+  color: var(--btn-secondary-fg-hover);
+  background-color: color-mix(in srgb, var(--btn-secondary-fg) 8%, transparent);
   outline: none;
 }
 
 .converter__dropzone-file-output-option--selected {
   font-weight: var(--weight-bold);
-  color: var(--color-brand);
-  background-color: rgba(var(--color-brand-rgb), 0.11);
-}
-
-.converter__dropzone-file-field--format:hover {
-  border-color: rgba(var(--color-brand-rgb), 0.55);
+  color: var(--btn-secondary-fg-hover);
+  background-color: color-mix(in srgb, var(--btn-secondary-fg) 12%, transparent);
 }
 
 .converter__dropzone-file-field--format:focus-within {
-  border-color: var(--color-brand-hover);
-  box-shadow: 0 0 0 calc(var(--head) / 16) rgba(var(--color-brand-rgb), 0.18);
-}
-
-.converter__dropzone-file-output-trigger:hover {
-  color: var(--color-brand-hover);
-}
-
-.converter__dropzone-file-output-trigger:focus-visible {
-  outline: none;
-  color: var(--color-brand-hover);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

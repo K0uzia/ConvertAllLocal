@@ -9,8 +9,8 @@
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
-  color: var(--color-ink);
-  background: var(--color-surface);
+  color: var(--color-title);
+  background: var(--color-bg);
   text-decoration: none;
   transform: translateY(-120%);
   transition: transform 0.15s ease;
@@ -18,7 +18,7 @@
 
 .skip-link:focus-visible {
   transform: translateY(0);
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
@@ -44,7 +44,7 @@ body {
   font-size: var(--text-md);
   font-weight: var(--weight-normal);
   line-height: 1.5;
-  color: var(--color-ink);
+  color: var(--color-title);
   background-color: transparent;
   transition: none;
   overflow-x: hidden;

@@ -25,13 +25,10 @@ const canonicalUrl = canonicalPath
   ? new URL(canonicalPath, siteUrl).href
   : new URL(Astro.url.pathname, siteUrl).href;
 const ogImageUrl = new URL(ogImage, siteUrl).href;
-const grainUrl = assetUrl('grain.svg');
-const grainFiberUrl = assetUrl('grain-fiber.svg');
-const noiseStyle = `--page-noise-image: url('${grainUrl}'); --page-noise-fiber-image: url('${grainFiberUrl}');`;
 ---
 
 <!doctype html>
-<html lang="fr" style={noiseStyle}>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={assetUrl('favicon/favicon.svg')} />
@@ -39,7 +36,7 @@ const noiseStyle = `--page-noise-image: url('${grainUrl}'); --page-noise-fiber-i
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#14171c" />
+    <meta name="theme-color" content="" id="site-theme-color" />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
@@ -54,6 +51,14 @@ const noiseStyle = `--page-noise-image: url('${grainUrl}'); --page-noise-fiber-i
     <meta name="twitter:image" content={ogImageUrl} />
     <link rel="manifest" href={assetUrl('manifest.webmanifest')} />
     <title>{title}</title>
+    <script is:inline>
+      (function () {
+        var meta = document.getElementById('site-theme-color');
+        if (!meta) return;
+        var bg = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim();
+        if (bg) meta.setAttribute('content', bg);
+      })();
+    </script>
     <slot name="head" />
   </head>
   <body>
