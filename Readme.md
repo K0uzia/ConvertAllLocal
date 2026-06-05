@@ -5,6 +5,7 @@
 [![100 % local](https://img.shields.io/badge/Traitement-100%25%20local-0ea5e9)](./Readme.md)
 [![Stack](https://img.shields.io/badge/Stack-Astro-BC52EE?logo=astro&logoColor=white)](./src/)
 [![Desktop](https://img.shields.io/badge/Desktop-Linux%20%7C%20Windows-1793D2?logo=linux&logoColor=white)](./Readme.md#formats-convertibles)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bc7023de-fe4f-4e53-b38a-fa330e1e8b5e/deploy-status)](https://app.netlify.com/projects/convertalllocal/deploys)
 
 # ConvertAllLocal - FR
 
