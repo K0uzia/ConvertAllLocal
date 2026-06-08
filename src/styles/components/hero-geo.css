@@ -1,0 +1,141 @@
+/**
+ * Motif géométrique hero : carrés, axes, fondu radial (--hero-geo-*).
+ */
+
+.hero__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: transparent;
+  isolation: isolate;
+  z-index: 0;
+}
+
+.hero__bg-fade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse var(--hero-grid-fade-rx) var(--hero-grid-fade-ry) at var(--hero-grid-fade-x)
+      var(--hero-grid-fade-y),
+    var(--hero-bg) 0%,
+    var(--hero-bg) 26%,
+    color-mix(in srgb, var(--hero-bg) 88%, transparent) 48%,
+    color-mix(in srgb, var(--hero-bg) 42%, transparent) 72%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.hero-geo__motif {
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+  width: min(140vmax, 1200px);
+  height: min(140vmax, 1200px);
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: visible;
+  transform: translate(6%, -4%);
+  z-index: 2;
+}
+
+.hero-geo__line {
+  stroke: var(--hero-geo-line);
+  stroke-width: var(--hero-geo-stroke);
+  vector-effect: non-scaling-stroke;
+  fill: none;
+  shape-rendering: geometricPrecision;
+}
+
+.hero-geo__line--bright {
+  stroke: var(--hero-geo-line-bright);
+}
+
+.hero-geo__square {
+  stroke: var(--hero-geo-square);
+  stroke-width: var(--hero-geo-stroke);
+  vector-effect: non-scaling-stroke;
+  fill: none;
+  shape-rendering: geometricPrecision;
+}
+
+.hero-geo__square--accent {
+  stroke: var(--hero-geo-square-accent);
+}
+
+.hero-geo__motif--accent .hero-geo__line {
+  stroke: var(--site-geo-halo-line);
+}
+
+.hero-geo__motif--accent .hero-geo__line--bright {
+  stroke: var(--site-geo-halo-line-bright);
+}
+
+.hero-geo__motif--accent .hero-geo__square {
+  stroke: var(--site-geo-halo-square);
+}
+
+.hero-geo__motif--accent .hero-geo__square--accent {
+  stroke: var(--site-geo-halo-line-bright);
+}
+
+.hero-geo__halo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--site-geo-halo-opacity);
+  transition: opacity 0.22s ease;
+  mask-image: radial-gradient(
+    circle var(--site-geo-halo-radius) at var(--site-geo-halo-x) var(--site-geo-halo-y),
+    rgb(0 0 0 / 100%) 0%,
+    rgb(0 0 0 / 45%) 42%,
+    rgb(0 0 0 / 0%) 100%
+  );
+  mask-mode: alpha;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(
+    circle var(--site-geo-halo-radius) at var(--site-geo-halo-x) var(--site-geo-halo-y),
+    rgb(0 0 0 / 100%) 0%,
+    rgb(0 0 0 / 45%) 42%,
+    rgb(0 0 0 / 0%) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  z-index: 3;
+}

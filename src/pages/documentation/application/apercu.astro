@@ -1,41 +1,47 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import DocsArticleFooter from '../../../components/Docs/DocsArticleFooter.astro';
+import DocsShell from '../../../components/Docs/DocsShell.astro';
 import '../../../styles/pages/documentation.css';
-import { categoryById } from '../../../data/documentation';
-import { brandName, pageUrl } from '../../../data/site';
+import { adjacentArticles, articleBySlug, categoryById } from '../../../data/documentation';
+import { buildBreadcrumbJsonLd } from '../../../data/seo-jsonld.ts';
+import { brandName, pageUrl, siteUrl } from '../../../data/site';
 
-const category = categoryById('application');
-const docsIndex = pageUrl('documentation/');
-const updated = '2026-06-05';
+const article = articleBySlug('apercu')!;
+const category = categoryById(article.category);
+const { prev, next } = adjacentArticles('apercu');
+const canonicalPath = '/documentation/application/apercu/';
+const pageUrlAbs = new URL(canonicalPath, siteUrl).href;
+const docsIndexAbs = new URL(pageUrl('documentation/'), siteUrl).href;
+const updated = article.updated;
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: 'Documentation', url: docsIndexAbs },
+  { name: category?.title ?? 'Application', url: docsIndexAbs },
+  { name: article.title, url: pageUrlAbs },
+]);
 ---
 
 <Layout
-  title={`Application desktop - Documentation - ${brandName}`}
-  description="Périmètre prévu de l'application desktop ConvertAllLocal : vidéo, Office, OCR, RAW et gros fichiers."
-  canonicalPath="/documentation/application/apercu/"
+  layout="docs"
+  title={`${article.title} - Documentation - ${brandName}`}
+  description={`Périmètre prévu de l'application desktop ${brandName} : vidéo, Office, OCR, RAW et gros fichiers.`}
+  canonicalPath={canonicalPath}
 >
-  <article class="docs">
-    <div class="docs__container">
-      <nav class="docs-article__nav" aria-label="Fil d'Ariane">
-        <a href={docsIndex}>Documentation</a>
-        <span class="docs-article__nav-sep" aria-hidden="true">/</span>
-        <span>{category?.title ?? 'Application'}</span>
-        <span class="docs-article__nav-sep" aria-hidden="true">/</span>
-        <span>Application desktop</span>
-      </nav>
-
-      <header class="docs-article__head">
-        <span class="docs-article__tag">Application</span>
-        <h1 class="docs-article__title">Application desktop</h1>
-        <p class="docs-article__lead">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <DocsShell currentArticle={article}>
+    <article>
+      <header class="docs__article-head">
+        <p class="docs__article-kicker">{category?.title ?? 'Application'}</p>
+        <h1 class="docs__article-title">{article.title}</h1>
+        <p class="docs__lead">
           Application locale Tauri (Linux et Windows), en cours de développement. Même philosophie que
           le site : traitement sur votre machine, sans envoi de fichiers vers un serveur.
         </p>
       </header>
 
-      <div class="docs-article__body">
-        <section class="docs-article__section" aria-labelledby="doc-app-why">
-          <h2 class="docs-article__heading" id="doc-app-why">Pourquoi une application ?</h2>
+      <div class="docs__article">
+        <section class="docs__section" aria-labelledby="doc-app-why">
+          <h2 class="docs__section-title" id="doc-app-why">Pourquoi une application ?</h2>
           <p>
             Le navigateur impose des limites de mémoire et ne donne pas accès à tous les codecs ni à
             l'OCR. L'application desktop reprend le convertisseur pour les usages plus exigeants,
@@ -43,8 +49,8 @@ const updated = '2026-06-05';
           </p>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-app-scope">
-          <h2 class="docs-article__heading" id="doc-app-scope">Périmètre prévu</h2>
+        <section class="docs__section" aria-labelledby="doc-app-scope">
+          <h2 class="docs__section-title" id="doc-app-scope">Périmètre prévu</h2>
           <ul>
             <li><strong>Vidéo</strong> : conteneurs et codecs courants (MP4, MKV, WebM, etc.)</li>
             <li><strong>Office</strong> : DOCX, ODT, XLSX et formats bureautiques lourds</li>
@@ -54,8 +60,8 @@ const updated = '2026-06-05';
           </ul>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-app-web">
-          <h2 class="docs-article__heading" id="doc-app-web">Déjà sur le site</h2>
+        <section class="docs__section" aria-labelledby="doc-app-web">
+          <h2 class="docs__section-title" id="doc-app-web">Déjà sur le site</h2>
           <p>
             Images, audio, documents texte et PDF léger restent sur
             <a href={pageUrl('convertir/')}>/convertir</a>. Détail des matrices et limites :
@@ -63,27 +69,16 @@ const updated = '2026-06-05';
           </p>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-app-status">
-          <h2 class="docs-article__heading" id="doc-app-status">État</h2>
+        <section class="docs__section" aria-labelledby="doc-app-status">
+          <h2 class="docs__section-title" id="doc-app-status">État</h2>
           <p>
             L'application n'est pas encore publiée. Le site et cette documentation seront mis à jour
             au fil des releases Tauri.
           </p>
         </section>
-
-        <p class="docs-article__updated">
-          Dernière mise à jour :{' '}
-          {new Date(updated).toLocaleDateString('fr-FR', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          })}
-        </p>
-        <a class="docs-article__back" href={docsIndex}>
-          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-          Retour à la documentation
-        </a>
       </div>
-    </div>
-  </article>
+
+      <DocsArticleFooter updated={updated} prev={prev} next={next} />
+    </article>
+  </DocsShell>
 </Layout>

@@ -1,15 +1,16 @@
 import type { APIRoute } from 'astro';
+import { brandName } from '../data/site';
 
 export const GET: APIRoute = () => {
   const base = import.meta.env.BASE_URL;
   const manifest = {
-    name: 'Convert All Local',
-    short_name: 'ConvertAllLocal',
+    name: brandName,
+    short_name: brandName,
     description: 'Conversion de fichiers 100 % locale dans le navigateur.',
     start_url: base,
     display: 'standalone',
-    background_color: '#15182e',
-    theme_color: '#15182e',
+    background_color: '#000000',
+    theme_color: '#000000',
     icons: [
       {
         src: `${base}favicon/favicon.svg`,

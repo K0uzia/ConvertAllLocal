@@ -1,0 +1,68 @@
+---
+import { docArticles, type DocArticle } from '../../data/documentation';
+import { pageUrl } from '../../data/site';
+
+interface Props {
+  currentArticle?: DocArticle;
+}
+
+const { currentArticle } = Astro.props;
+const docsIndex = pageUrl('documentation/');
+---
+
+<aside class="docs__sidebar">
+  <nav class="docs__sidebar-nav" aria-label="Navigation documentation">
+    <a
+      class:list={['docs__sidebar-home', { 'is-active': !currentArticle }]}
+      href={docsIndex}
+      aria-current={!currentArticle ? 'page' : undefined}
+    >
+      Documentation
+    </a>
+
+    <ul class="docs__sidebar-list">
+      {
+        docArticles.map((article) => {
+          const isCurrent = currentArticle?.slug === article.slug;
+          return (
+            <li class="docs__sidebar-item">
+              <details class:list={['docs__sidebar-group', { 'is-active': isCurrent }]} open>
+                <summary class="docs__sidebar-cat" id={`docs-nav-${article.slug}`}>
+                  <a
+                    class:list={['docs__sidebar-article-link', { 'is-active': isCurrent }]}
+                    href={article.href}
+                    aria-current={isCurrent ? 'page' : undefined}
+                    onclick="event.stopPropagation()"
+                  >
+                    {article.title}
+                  </a>
+                </summary>
+                {article.chapters.length > 0 ? (
+                  <ul class="docs__sidebar-toc-list">
+                    {article.chapters.map((chapter) => (
+                      <li class="docs__sidebar-toc-item">
+                        <a
+                          class="docs__sidebar-toc-link"
+                          href={`${article.href}#${chapter.id}`}
+                        >
+                          {chapter.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </details>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</aside>
+
+<script>
+  import { initDocsSidebar } from './docs-sidebar.ts';
+
+  initDocsSidebar();
+  document.addEventListener('astro:page-load', initDocsSidebar);
+</script>

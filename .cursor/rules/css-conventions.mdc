@@ -1,10 +1,12 @@
 ---
 description: Conventions CSS du projet ConvertAllLocal
-globs: "**/*.css"
-alwaysApply: false
+globs: "{**/*.css,**/*.astro}"
+alwaysApply: true
 ---
 
 # CSS
+
+S'applique aux fichiers `.css` et aux blocs `<style>` des fichiers `.astro`.
 
 - Toutes les valeurs dans `src/styles/base/variables.css` uniquement.
 - Autres fichiers : seulement `var()` et `calc(var(...))`, pas de px/couleurs en dur.

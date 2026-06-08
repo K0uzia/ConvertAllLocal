@@ -15,7 +15,13 @@ import './HowItWorks.css';
         </p>
       </div>
 
-      <div class="how__row" role="list">
+      <div class="how__row-wrap">
+        <div class="how__trace-viewport" aria-hidden="true">
+          <svg class="how__trace" focusable="false">
+            <path class="how__trace-path" fill="none" />
+          </svg>
+        </div>
+        <div class="how__row" role="list">
         <div class="how__step" role="listitem">
           <div class="how__step-grid">
             <span class="how__step-icon" aria-hidden="true">
@@ -84,8 +90,16 @@ import './HowItWorks.css';
             </div>
           </div>
         </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { initHowTrace } from './how-trace.ts';
+
+  initHowTrace();
+  document.addEventListener('astro:page-load', initHowTrace);
+</script>
 

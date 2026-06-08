@@ -1,0 +1,92 @@
+/**
+ * Grille diagonale site (--site-geo-*, halo accent au survol).
+ */
+
+.site-geo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.site-geo__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-geo__layer--halo {
+  opacity: var(--site-geo-halo-opacity);
+  transition: opacity 0.22s ease;
+  mask-image: radial-gradient(
+    circle var(--site-geo-halo-radius) at var(--site-geo-halo-x) var(--site-geo-halo-y),
+    rgb(0 0 0 / 100%) 0%,
+    rgb(0 0 0 / 45%) 42%,
+    rgb(0 0 0 / 0%) 100%
+  );
+  mask-mode: alpha;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(
+    circle var(--site-geo-halo-radius) at var(--site-geo-halo-x) var(--site-geo-halo-y),
+    rgb(0 0 0 / 100%) 0%,
+    rgb(0 0 0 / 45%) 42%,
+    rgb(0 0 0 / 0%) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-geo__layer--halo,
+  .hero-geo__halo {
+    display: none;
+    transition: none;
+  }
+}
+
+.site-geo__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: visible;
+}
+
+.site-geo__line {
+  stroke: var(--site-geo-line);
+  stroke-width: var(--hero-geo-stroke);
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+}
+
+.site-geo__line--bright {
+  stroke: var(--site-geo-line-bright);
+}
+
+.site-geo__line--accent {
+  stroke: var(--site-geo-halo-line);
+  stroke-width: calc(var(--hero-geo-stroke) + 0.25px);
+}
+
+.site-geo__line--accent-bright {
+  stroke: var(--site-geo-halo-line-bright);
+}

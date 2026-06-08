@@ -13,7 +13,7 @@
   height: var(--converter-file-control-h);
   min-height: var(--converter-file-control-h);
   border-radius: var(--converter-settings-radius);
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   overflow: visible;
   box-shadow: 0 1px 0 var(--shadow-sm);
 }
@@ -56,7 +56,7 @@
   padding: 0 calc(var(--head) / 11);
   border-width: 0;
   border-radius: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-bold);
   line-height: 1;
@@ -108,8 +108,8 @@
   border-color: var(--btn-secondary-border);
   border-radius: var(--converter-settings-radius);
   list-style: none;
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
+  font-family: var(--font);
+  background-color: var(--color-surface);
   box-shadow:
     0 calc(var(--head) / 14) calc(var(--head) / 5) var(--shadow-sm),
     0 0 0 1px color-mix(in srgb, var(--btn-secondary-border) 8%, transparent);

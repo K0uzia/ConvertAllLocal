@@ -1,26 +1,27 @@
 ---
 import './Header.css';
 import { assetUrl, brandName, headerNav, homeSections, pageUrl } from '../../data/site';
+
+interface Props {
+  variant?: 'default' | 'hero';
+}
+
+const { variant = 'default' } = Astro.props;
 ---
 
-<header class="header">
+<header class:list={['header', variant === 'hero' && 'header--hero']}>
   <div class="header__container">
-    <a href={pageUrl('/')} class="header__logo" aria-label={`Accueil ${brandName}`}>
-      <img class="header__logo-icon" src={assetUrl('logo.svg')} alt="" decoding="async" />
-    </a>
-
-    <div class="header__end">
-      <button
-        type="button"
-        class="btn btn--secondary header__menu-btn"
-        data-header-menu-btn
-        aria-expanded="false"
-        aria-controls="header-mobile-nav"
-        aria-label="Ouvrir le menu"
-      >
-        <i class="fa-solid fa-bars header__menu-icon header__menu-icon--open" aria-hidden="true"></i>
-        <i class="fa-solid fa-xmark header__menu-icon header__menu-icon--close" aria-hidden="true"></i>
-      </button>
+    <div class="header__bar">
+      <a href={pageUrl('/')} class="header__logo" aria-label={`Accueil ${brandName}`}>
+        <img
+          class="header__logo-icon"
+          src={assetUrl('logo.svg')}
+          alt=""
+          width="128"
+          height="128"
+          decoding="async"
+        />
+      </a>
 
       <nav class="header__nav" aria-label="Navigation principale">
         <ul class="header__nav-list">
@@ -35,6 +36,19 @@ import { assetUrl, brandName, headerNav, homeSections, pageUrl } from '../../dat
           }
         </ul>
       </nav>
+
+      <button
+        type="button"
+        class="header__menu-btn"
+        data-header-menu-btn
+        aria-expanded="false"
+        aria-controls="header-mobile-nav"
+        aria-label="Ouvrir le menu"
+      >
+        <span class="header__burger-line header__burger-line--1" aria-hidden="true"></span>
+        <span class="header__burger-line header__burger-line--2" aria-hidden="true"></span>
+        <span class="header__burger-line header__burger-line--3" aria-hidden="true"></span>
+      </button>
 
       <nav
         id="header-mobile-nav"
@@ -55,23 +69,35 @@ import { assetUrl, brandName, headerNav, homeSections, pageUrl } from '../../dat
           }
         </ul>
       </nav>
-
-      <a href={homeSections.convertir} class="btn btn--primary header__cta">
-        Convertir
-        <i class="header__cta-icon fa-solid fa-arrow-right-long" aria-hidden="true"></i>
-      </a>
     </div>
+
+    <a href={homeSections.convertir} class="header__cta">
+      <span class="header__cta-inner">
+        <span class="header__cta-label">Convertir</span>
+        <span class="header__cta-arrow" aria-hidden="true">
+          <svg
+            class="header__cta-arrow-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 13 13"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M11.0032 3.41421L2.39663 12.0208L0.982422 10.6066L9.58901 2H2.00324V0H13.0032V11H11.0032V3.41421Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </span>
+    </a>
   </div>
 </header>
 
 <script>
   import { initHeaderMenu } from './header-menu.ts';
-  import { initHeaderScroll } from './header-scroll.ts';
 
-  initHeaderScroll();
   initHeaderMenu();
   document.addEventListener('astro:page-load', () => {
-    initHeaderScroll();
     initHeaderMenu();
   });
 </script>

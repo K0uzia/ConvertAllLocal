@@ -1,5 +1,6 @@
 ---
 description: Ne pas lancer pnpm build automatiquement après chaque modification
+globs: "{**/*,**/*.astro}"
 alwaysApply: true
 ---
 

@@ -5,7 +5,8 @@ import { brandName, homeSections, pageUrl } from '../data/site';
 
 <Layout
   title={`Page introuvable - ${brandName}`}
-  description="La page demandée n'existe pas sur Convert All Local."
+  description={`La page demandée n'existe pas sur ${brandName}.`}
+  canonicalPath="/"
   noindex={true}
 >
   <section class="privacy" aria-labelledby="not-found-title">

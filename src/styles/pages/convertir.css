@@ -4,7 +4,7 @@
   margin: 0;
   padding: calc(var(--head) * 1.25) 0 calc(var(--head) * 1.5) 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: var(--color-title);
   background-color: transparent;
   transition: none;
@@ -19,7 +19,7 @@
   margin: 0 auto;
   padding: 0 var(--pad-x);
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -49,7 +49,7 @@
   margin: 0 0 var(--converter-gap) 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -66,7 +66,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-title);
   font-size: calc(var(--head) / 1.6);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -96,7 +96,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-md);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
@@ -117,7 +117,7 @@
   padding: calc(var(--head) / 6.4);
   border: 1px solid var(--color-accent);
   border-radius: var(--converter-settings-radius);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: var(--color-text);
   background: transparent;
   overflow: visible;

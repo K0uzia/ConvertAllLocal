@@ -1,5 +1,6 @@
 import type { OutputFormatOption } from '../../data/converter-output-formats.js';
 import { extensionFromFile } from '../../data/converter-limits.js';
+import { brandName } from '../../data/site.ts';
 import { ConvertError, validateFileWeight } from './converter-errors.js';
 import { baseFilename } from './converter-filename.js';
 import type { ConvertResult, ProgressCallback } from './converter-image-engine.js';
@@ -122,7 +123,7 @@ export async function convertDocumentFile(
 
   if (output.id === 'html' && ext === 'md') {
     const body = await parseMarkdownToHtml(source);
-    resultText = `<!DOCTYPE html>\n<html lang="fr">\n<head><meta charset="utf-8"><title>Convert All Local</title></head>\n<body>\n${body}\n</body>\n</html>`;
+    resultText = `<!DOCTYPE html>\n<html lang="fr">\n<head><meta charset="utf-8"><title>${brandName}</title></head>\n<body>\n${body}\n</body>\n</html>`;
   } else if (output.id === 'txt' && (ext === 'md' || ext === 'html' || ext === 'htm')) {
     resultText = ext === 'md' ? await markdownToPlainText(source) : htmlToPlainText(source);
     mime = 'text/plain;charset=utf-8';

@@ -3,6 +3,7 @@ import '../styles/global.css';
 import '../styles/layouts/Layout.css';
 import Header from '../components/Header/Header.astro';
 import Footer from '../components/Footer/Footer.astro';
+import SiteGeoGrid from '../components/SiteGeo/SiteGeoGrid.astro';
 import { assetUrl, brandName, defaultDescription, siteUrl } from '../data/site';
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
   ogImage?: string;
   canonicalPath?: string;
   noindex?: boolean;
+  layout?: 'default' | 'docs';
 }
 
 const {
@@ -19,6 +21,7 @@ const {
   ogImage = assetUrl('logo.svg'),
   canonicalPath,
   noindex = false,
+  layout = 'default',
 } = Astro.props;
 
 const canonicalUrl = canonicalPath
@@ -28,9 +31,15 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class:list={[{ 'layout--docs': layout === 'docs' }]}>
   <head>
     <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Mallanna&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/svg+xml" href={assetUrl('favicon/favicon.svg')} />
     <link rel="apple-touch-icon" href={assetUrl('favicon/favicon.svg')} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -62,11 +71,26 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
     <slot name="head" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Aller au contenu</a>
-    <Header />
+    <div class="site-geo" aria-hidden="true">
+      <div class="site-geo__layer site-geo__layer--base">
+        <SiteGeoGrid />
+      </div>
+      <div class="site-geo__layer site-geo__layer--halo">
+        <SiteGeoGrid variant="accent" />
+      </div>
+    </div>
+    <slot name="site-header">
+      <Header />
+    </slot>
     <main id="main">
       <slot />
     </main>
     <Footer />
+    <script>
+      import { initSiteGeoHalo } from '../components/SiteGeo/site-geo-halo.ts';
+
+      initSiteGeoHalo();
+      document.addEventListener('astro:page-load', initSiteGeoHalo);
+    </script>
   </body>
 </html>

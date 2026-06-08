@@ -4,7 +4,7 @@
   margin: 0;
   padding: calc(var(--head) * 1.25) 0 calc(var(--head) * 1.5) 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: var(--color-title);
   background-color: transparent;
   transition: none;
@@ -19,7 +19,7 @@
   margin: 0 auto;
   padding: 0 var(--pad-x);
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -49,7 +49,7 @@
   margin: 0 0 calc(var(--head) / 1.6) 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -63,7 +63,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-title);
   font-size: calc(var(--head) / 2);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -86,7 +86,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-lead);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
@@ -107,7 +107,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -121,7 +121,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -135,7 +135,7 @@
   margin: 0 0 calc(var(--head) / 8) 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-title);
   font-size: calc(var(--head) / 2.667);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -152,7 +152,7 @@
   margin: 0 0 calc(var(--head) / 8) 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-md);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
@@ -178,7 +178,7 @@
 }
 
 .privacy__section code {
-  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+  font-family: var(--font);
   font-size: 0.92em;
   color: var(--color-title);
 }
@@ -191,7 +191,7 @@
   border-width: 1px 0 0 0;
   border-style: solid;
   border-color: color-mix(in srgb, var(--color-text) 12%, transparent);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-normal);
   line-height: 1.5;

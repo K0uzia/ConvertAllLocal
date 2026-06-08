@@ -1,0 +1,83 @@
+---
+description: SEO, métadonnées et lisibilité/accessibilité (Google Search Central + Google Fonts Knowledge)
+globs: "{**/*.astro,src/**,public/**}"
+alwaysApply: true
+---
+
+# SEO, métadonnées et accessibilité
+
+Références : [Guide SEO Google](https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr), [Lisibilité et accessibilité (Google Fonts)](https://fonts.google.com/knowledge/readability_and_accessibility).
+
+## Où placer quoi
+
+| Rôle | Fichier / zone |
+|------|----------------|
+| Marque, description par défaut, URLs | `src/data/site.ts` |
+| Balises `<head>` communes | `src/layouts/Layout.astro` |
+| Titre, description, canonical par page | props de `Layout` dans `src/pages/**` |
+| Contenu indexable (titres, textes, liens) | `src/components/**/*.astro` + `src/data/**` |
+| Favicon, manifest, robots, sitemap | `public/` |
+
+Ne dupliquer ni métadonnées ni textes marketing : une source de vérité, réutilisée partout.
+
+## Métadonnées (Google Search)
+
+Chaque page indexable doit avoir :
+
+- **`<title>`** : unique, clair, concis, décrit la page. Accueil : `Converter - Kouzia` (`brandName - companyName`). Autres pages : `Sujet - Converter` (tiret ASCII autorisé entre sujet et marque).
+- **`meta name="description"`** : 1 à 2 phrases, propre à la page, reprend les points utiles pour l'extrait Google. Pas de bourrage de mots clés.
+- **`link rel="canonical"`** : URL absolue canonique via `canonicalPath` + `siteUrl`.
+- **`html lang="fr"`** : langue du document.
+- **`meta name="viewport"`** : déjà dans `Layout.astro`, ne pas retirer.
+
+Open Graph / Twitter : aligner `og:title`, `og:description`, `og:url`, `og:image` sur le même titre, description et canonical que la page.
+
+Pages à exclure de l'index : `noindex` explicite (`Layout` prop `noindex` ou `robots.txt`), jamais par omission.
+
+À **ne pas** ajouter : `meta keywords` (ignorée par Google), titres/descriptions identiques sur toutes les pages, contenu principal chargé uniquement en JS sans équivalent HTML.
+
+## Données structurées
+
+Ajouter du JSON-LD seulement si le contenu correspond vraiment au type ([consignes Google](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=fr)) : `WebSite`, `SoftwareApplication`, `FAQPage` (si FAQ réelle), `BreadcrumbList` pour la doc.
+
+JSON valide, champs obligatoires du schéma, pas de données inventées.
+
+## URLs et liens
+
+- Chemins descriptifs en français ou anglais technique cohérent : `/convertir/`, `/documentation/web/conversions/`, pas d'IDs opaques.
+- Un contenu = une URL canonique ; redirection ou `rel="canonical"` si doublon.
+- **Texte d'ancrage** descriptif (`Formats supportés`, pas `cliquez ici`).
+- Liens externes non fiables : `rel="noopener noreferrer"` ; `nofollow` si contenu UGC ou lien non endossé.
+
+## Contenu people-first
+
+- Texte naturel, unique, à jour, structuré (paragraphes courts, listes si utile).
+- Un **`<h1>`** par page, hiérarchie logique `h2` > `h3` sans sauter de niveau pour le style.
+- Anticiper les requêtes des utilisateurs sans répéter artificiellement les mêmes mots.
+
+## Images et médias
+
+- **`alt`** descriptif si l'image apporte de l'information ; `alt=""` + `aria-hidden="true"` si décorative (logo adjacent à un libellé, motifs géo).
+- Texte pertinent à proximité des visuels informatifs.
+- `width` / `height` ou ratio connu quand possible (CLS).
+
+## Lisibilité et accessibilité (Google Fonts Knowledge)
+
+La lecture est la priorité typographique :
+
+- Corps lisible : tailles et interlignes via `variables.css` (`--text-*`, `--line-*`), pas de micro-texte pour du contenu principal.
+- **Contraste** suffisant texte/fond (WCAG AA minimum pour le texte courant).
+- Longueur de ligne raisonnable sur desktop ; pas de blocs pleine largeur illisibles.
+- Titres : `font-title` pour l'affichage, balises sémantiques pour la structure.
+- Ordre de titres cohérent pour lecteurs d'écran (ne pas utiliser un `h4` avant un `h2` dans le DOM).
+- Éviter tout caps prolongé, graisses trop fines ou contrastes faibles pour le texte important.
+- Liens et boutons : libellés explicites, états `:focus-visible` conservés.
+
+## Vérification rapide avant merge
+
+- [ ] Titre + description uniques sur la page touchée
+- [ ] Canonical correct (surtout GitHub Pages + `basePath`)
+- [ ] Un seul `h1`, structure de titres logique
+- [ ] `alt` revus sur les images ajoutées/modifiées
+- [ ] Pas de bourrage SEO ni de métadonnées contradictoires avec le contenu visible
+- [ ] Texte UI relu : clair, scannable, sans tiret cadratin (règle `no-em-dash`)

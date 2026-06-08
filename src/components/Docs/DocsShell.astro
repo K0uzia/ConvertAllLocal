@@ -1,0 +1,21 @@
+---
+import DocsBreadcrumb from './DocsBreadcrumb.astro';
+import DocsSidebar from './DocsSidebar.astro';
+import type { DocArticle } from '../../data/documentation';
+
+interface Props {
+  currentArticle?: DocArticle;
+}
+
+const { currentArticle } = Astro.props;
+---
+
+<div class="docs">
+  <DocsSidebar currentArticle={currentArticle} />
+  <div class="docs__layout">
+    <div class="docs__main">
+      <DocsBreadcrumb currentArticle={currentArticle} />
+      <slot />
+    </div>
+  </div>
+</div>

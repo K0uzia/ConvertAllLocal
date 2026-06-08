@@ -32,10 +32,6 @@ export function getWebBatchLimitBytes(): number {
   return WEB_MAX_BATCH_BYTES;
 }
 
-export function formatWebBatchLimit(): string {
-  return formatBytes(getWebBatchLimitBytes());
-}
-
 export function webBatchLimitMoLabel(): number {
   return Math.round(getWebBatchLimitBytes() / (1024 * 1024));
 }

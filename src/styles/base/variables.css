@@ -10,27 +10,32 @@
   --container: 80rem;
 
   /* Couleurs du thème (seule source de hex)
-     bg : fond de page et panneaux
+     bg : fond de page
+     surface : panneaux (header, cartes, champs)
      text : corps de texte
      title : titres, labels forts, nav active
      accent / accent-hover : boutons, liens, bordures, éléments à mettre en avant
      waiting : file en attente
      success / error : états de conversion terminés ou en échec */
-  --color-bg: #15182e;
-  --color-text: #ffffff;
+  --color-bg: #0a0a0a;
+  --color-surface: #0a0a0a;
+  --color-surface-raised: #141414;
+  --color-border: rgb(255 255 255 / 10%);
+  --color-border-strong: rgb(255 255 255 / 18%);
+  --color-text: rgb(255 255 255 / 82%);
   --color-title: #ffffff;
-  --color-accent: #ffb703;
-  --color-accent-hover: #e8a84d;
+  --color-accent: #1FA774;
+  --color-accent-hover: #1b8b62;
   --color-waiting: #cbcccf;
   --color-success: #abd1c6;
   --color-error: #e05252;
 
-  /* Boutons primary / secondary (référence : hero) */
+  /* Boutons primary / secondary (référence : hero / header) */
   --btn-primary-bg: var(--color-accent);
-  --btn-primary-fg: var(--color-bg);
+  --btn-primary-fg: #070707;
   --btn-primary-border: var(--color-accent);
   --btn-primary-bg-hover: var(--color-accent-hover);
-  --btn-primary-fg-hover: var(--color-bg);
+  --btn-primary-fg-hover: #070707;
   --btn-primary-border-hover: var(--color-accent-hover);
 
   --btn-secondary-bg: transparent;
@@ -43,7 +48,8 @@
   --shadow-sm: 0 1px 2px color-mix(in srgb, var(--color-bg) 20%, transparent);
 
   /* Typographie */
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-title: 'Elms Sans', sans-serif;
+  --font: 'Nunito Sans', sans-serif;
   --text-sm: calc(var(--head) / 4.571);
   --text-md: calc(var(--head) / 4);
   --text-logo: calc(var(--head) / 3.765);
@@ -59,36 +65,97 @@
   --pad-x: calc(var(--head) / 4);
   --pad-x-md: calc(var(--head) / 2.667);
   --pad-x-lg: calc(var(--head) / 2);
-  --gap-nav: calc(var(--head) / 2.667);
   --gap-logo: calc(var(--head) / 10.24);
-  --gap-header-end: calc(var(--head) / 2.667);
 
   /* Header */
-  --header-logo-icon: calc(var(--head) / 1.5);
-  --header-cta-pad-y: calc(var(--head) / 10.24);
-  --header-cta-pad-x: calc(var(--head) / 5.12);
-  --cta-icon-gap: calc(var(--head) / 16);
-  --cta-icon-shift: calc(var(--head) / 12.8);
+  --header-scale: 0.75;
+  --header-bar-bg: var(--color-surface-raised);
+  --header-bar-gap: calc(var(--head) / 1.454 * var(--header-scale));
+  --header-bar-radius: calc(var(--head) / 12.8 * var(--header-scale));
+  --radius-panel: var(--header-bar-radius);
+  --header-bar-pad-y: calc(var(--head) / 5.12 * var(--header-scale));
+  --header-bar-pad-x: calc(var(--head) / 2.59 * var(--header-scale));
+  --header-logo-icon: calc(var(--head) / 1.5 * var(--header-scale));
+  --header-row-height: calc(var(--header-bar-pad-y) * 2 + var(--header-logo-icon));
+  --header-float-pad: var(--pad-x);
+  --header-zone: calc(var(--header-row-height) + var(--header-float-pad));
+  --header-nav-font-size: calc(var(--header-row-height) * 0.32);
+  --header-menu-btn-size: calc(var(--head) / 2.667 * var(--header-scale));
+  --header-menu-btn-gap: calc(var(--head) / 32 * var(--header-scale));
+  --header-burger-line-w: calc(var(--head) / 4 * var(--header-scale));
+  --header-burger-line-h: calc(var(--head) / 64 * var(--header-scale));
+  --header-burger-shift: calc(var(--head) / 21.33 * var(--header-scale));
+  --header-mobile-nav-min-w: calc(var(--head) * 5 * var(--header-scale));
+  --header-mobile-nav-gap: calc(var(--head) / 10 * var(--header-scale));
+  --header-mobile-nav-link-pad: calc(var(--head) / 12 * var(--header-scale));
+  --header-cta-bg: var(--color-accent);
+  --header-cta-fg: #070707;
+  --header-cta-gap: calc(var(--head) / 2.59 * var(--header-scale));
+  --header-cta-radius: calc(var(--head) / 12.8 * var(--header-scale));
+  --header-cta-height: calc(var(--header-row-height) * 0.84);
+  --header-cta-pad-edge: calc(var(--head) / 40 * var(--header-scale));
+  --header-cta-pad-left: calc(var(--head) / 2.59 * var(--header-scale));
+  --header-cta-font-size: calc(var(--header-cta-height) * 0.32);
+  --header-cta-arrow-size: calc(var(--header-cta-height) - var(--header-cta-pad-edge) * 2);
+  --header-cta-arrow-icon: calc(var(--header-cta-arrow-size) * 0.45);
+  --header-pin-duration: 0.42s;
+  --header-pin-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Hero (largeur du bloc texte selon l'écran, typo inchangée) */
-  --hero-width: 100%;
-  --hero-width-md: calc(var(--container) * 0.85);
-  --hero-width-lg: calc(var(--container) * 0.72);
-  --viewport: 100dvh;
-  --hero-pad-y: var(--head);
-  --hero-pad-y-sm: calc(var(--head) * 1.5);
-  --hero-pad-y-lg: calc(var(--head) * 2);
-  --text-hero: calc(var(--head) * 9 / 16);
-  --text-hero-lg: calc(var(--head) * 3 / 4);
-  --text-lead: calc(var(--head) / 4);
-  --text-lead-lg: calc(var(--head) / 3.556);
-  --line-relaxed: 1.625;
-  --hero-gap-actions: calc(var(--head) / 4);
-  --hero-gap-actions-sm: calc(var(--head) / 2.667);
+  /* Fond géométrique */
+  --hero-bg: var(--color-bg);
+  --hero-grid-fade-x: 56%;
+  --hero-grid-fade-y: 42%;
+  --hero-grid-fade-rx: 50%;
+  --hero-grid-fade-ry: 42%;
+  --site-geo-line: rgb(255 255 255 / 10%);
+  --site-geo-line-bright: rgb(255 255 255 / 10%);
+  --hero-geo-line-bright: rgb(255 255 255 / 45%);
+  --hero-geo-square: rgb(255 255 255 / 60%);
+  --hero-geo-square-accent: var(--color-accent);
+  --hero-geo-stroke: 0.5px;
+  --site-geo-halo-radius: 11rem;
+  --site-geo-halo-line: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  --site-geo-halo-line-bright: color-mix(in srgb, var(--color-accent) 32%, transparent);
+  --site-geo-halo-square: color-mix(in srgb, var(--color-accent) 32%, transparent);
+  --site-geo-halo-strength: 0.55;
+  --site-geo-halo-x: 50%;
+  --site-geo-halo-y: 50%;
+  --site-geo-halo-opacity: 0;
+
+  /* Hero */
+  --hero-viewport: 100dvh;
+  --hero-side-pad: var(--pad-x);
+  --hero-side-pad-lg: var(--pad-x-lg);
+  --hero-content-pad-top: calc(var(--head) * 0.75);
+  --hero-content-pad-top-lg: calc(var(--head) * 1.5);
+  --hero-title-size: calc(var(--head) * 0.6875);
+  --hero-title-size-md: calc(var(--head) * 0.9375);
+  --hero-title-size-lg: clamp(
+    calc(var(--head) * 1.125),
+    4.2vw,
+    calc(var(--head) * 2)
+  );
+  --hero-title-line-height: 0.9;
+  --hero-title-tracking: -0.03em;
+  --hero-title-line-gap: calc(var(--head) / 28);
+  --hero-enfin-gap: 0.3em;
+  --hero-lead-col: min(calc(var(--container) * 0.5), 25rem);
+  --hero-lead-size: calc(var(--text-sm)* 1.2);
+  --hero-lead-part-gap: calc(var(--head) / 5);
+  --hero-stack-gap: calc(var(--head) * 0.5);
+  --hero-header-pad-bottom: calc(var(--head) * 0.625);
+  --hero-header-lift: calc(var(--head) * 0.75);
+  --viewport: var(--hero-viewport);
+  --text-lead: var(--hero-lead-size);
+  --text-lead-lg: var(--hero-lead-size);
+  --line-relaxed: 1.5;
+  --hero-rotate-duration: 5s;
+  --hero-rotate-line-height: 1.12;
+  --hero-rotate-descender-pad: 0.16em;
+  --hero-rotate-slot-height: calc(1em * var(--hero-rotate-line-height) + var(--hero-rotate-descender-pad));
+  --hero-rotate-fade-start: 22%;
   --hero-btn-pad-y: calc(var(--head) / 10.667);
   --hero-btn-pad-x: calc(var(--head) / 5.12);
-  --radius-btn: calc(var(--head) / 16);
-  --hero-rotate-duration: 5s;
 
   /* How it works */
   --how-lead-size: var(--text-md);
@@ -100,9 +167,12 @@
   --how-step-col-max: 21rem;
   --how-arrow-col: calc(var(--head) / 1.45);
   --how-row-gap: calc(var(--head) / 1.6);
-
-  /* Typographie technique (extensions) */
-  --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  --how-trace-stroke: 1px;
+  --how-trace-grid-step: 56px;
+  --how-trace-amplitude-steps: 4;
+  --how-trace-duration: 1.5s;
+  --how-arrow-slide-distance: calc(var(--head) / 12);
+  --how-arrow-slide-duration: 1.6s;
 
   /* Supports (section features) */
   --supports-pad-y: calc(var(--head) / 2);
@@ -114,33 +184,21 @@
   --supports-title-size: calc(var(--head) / 1.778);
   --supports-intro-size: calc(var(--head) / 3.556);
   --supports-intro-margin-top: calc(var(--head) / 2);
-  --supports-why-margin-top: calc(var(--head) / 1.6);
-  --supports-why-title-size: calc(var(--head) / 3.2);
   --supports-wheel-size: calc(var(--head) * 7.5);
   --supports-wheel-size-mobile: calc(var(--head) * 5.5);
   --supports-wheel-center-ratio: 0.58;
   --supports-wheel-radius: calc(var(--supports-wheel-size) * 0.385);
-  --supports-wheel-radius-mobile: calc(var(--supports-wheel-size-mobile) * 0.42);
   --supports-wheel-pill-size: calc(var(--head) * 1.35);
   --supports-wheel-pill-icon: calc(var(--head) / 2.35);
-  --supports-wheel-envelope-size: calc(
-    var(--supports-wheel-radius) * 2 + var(--supports-wheel-pill-size)
-  );
-  --supports-wheel-envelope-size-mobile: calc(
-    var(--supports-wheel-size-mobile) * var(--supports-wheel-center-ratio) + var(--head) / 4
-  );
   --supports-wheel-center-pad: calc(var(--head) / 3.2);
   --supports-wheel-duration: 0.8s;
   --supports-wheel-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --supports-wheel-pulse-spread-mid: calc(var(--head) / 10.667);
-  --supports-wheel-pulse-spread-end: calc(var(--head) / 6.4);
   --supports-wheel-track-hole-r: calc(
     50 * (var(--supports-wheel-pill-size) / 2 + var(--head) / 8) / var(--supports-wheel-radius)
   );
   --supports-wheel-panel-title-size: calc(var(--head) / 3.2);
   --supports-wheel-panel-lead-size: calc(var(--head) / 5.818);
   --supports-switch-track-pad: calc(var(--head) / 64);
-  --supports-switch-radius: calc(var(--head) / 8);
   --supports-switch-btn-pad-y: calc(var(--head) / 12.8);
   --supports-switch-btn-pad-x: calc(var(--head) / 8);
   --supports-switch-btn-size: calc(var(--head) / 4.571);
@@ -151,26 +209,38 @@
   );
   --supports-formats-body-h: calc(var(--head) * 2.25);
   --supports-formats-label-size: calc(var(--head) / 4.571);
-  --supports-formats-body-pad: calc(var(--head) / 6.4);
-  --supports-formats-radius: calc(var(--head) / 10.667);
   --supports-tag-gap: calc(var(--head) / 16);
   --supports-tag-size: calc(var(--head) / 5.818);
   --supports-tag-pad-y: calc(var(--head) / 24);
   --supports-tag-pad-x: calc(var(--head) / 12.8);
   --supports-tag-radius: calc(var(--head) / 16);
-  --supports-why-size: calc(var(--head) / 4.571);
 
   /* About */
-  --about-aside-w: calc(var(--head) * 9);
   --about-layout-gap: calc(var(--head) / 1.25);
   --about-head-gap: calc(var(--head) / 6.4);
   --about-title-size: calc(var(--head) / 1.778);
-  --about-intro-size: calc(var(--head) / 3.556);
   --about-aside-text-size: var(--text-sm);
   --about-aside-line-height: 1.5;
-  --about-problems-indent: calc(var(--head) / 2);
   --about-point-pad-y: calc(var(--head) / 1.6);
   --about-points-gap: calc(var(--head) / 1.6);
+  --about-faq-head-gap: calc(var(--head) / 6.4);
+  --about-faq-pad-y: calc(var(--head) / 8);
+  --about-faq-bullet-indent: calc(var(--head) / 2);
+
+  /* Documentation */
+  --docs-layout-pad-x: var(--pad-x);
+  --docs-layout-gap: calc(var(--head) / 1.6);
+  --docs-sidebar-w: 12.5rem;
+  --docs-sidebar-pad-x: calc(var(--head) / 8);
+  --docs-prose-max: calc(var(--head) * 14);
+  --docs-title-size: calc(var(--head) / 1.6);
+  --docs-lead-size: var(--text-md);
+  --docs-lead-max: var(--docs-prose-max);
+  --docs-head-gap: calc(var(--head) / 6.4);
+  --docs-section-gap: calc(var(--head) / 1.25);
+  --docs-section-pad-top: calc(var(--head) / 1.6);
+  --docs-sidebar-link-pad-y: calc(var(--head) / 14);
+  --docs-header-zone: calc(var(--header-row-height) + var(--header-float-pad));
 
   /* Converter */
   --converter-max-width: calc(var(--container) * 0.72);
@@ -178,8 +248,6 @@
   --converter-gap: calc(var(--head) / 1.25);
   --converter-shuffle-duration: 0.6s;
   --converter-bar-pad: calc(var(--head) / 6.4);
-  --converter-file-border: 1px;
-  --converter-file-pad-y: calc(var(--head) / 9.6);
   --converter-file-pad-x: calc(var(--head) / 8);
   --converter-file-gap: calc(var(--head) / 7.68);
   --converter-file-font: var(--text-md);
@@ -187,8 +255,6 @@
   --converter-file-line: 1.4;
   --converter-dropzone-filled-pad: calc(var(--head) / 6.4);
   --converter-file-icon-box: calc(var(--head) / 1.92);
-  --converter-file-icon-size: calc(var(--head) / 3.2);
-  --converter-title-size: var(--text-md);
   --converter-settings-radius: var(--radius-md);
   --converter-dropdown-chevron-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='currentColor' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   --converter-modal-max-width: calc(var(--head) * 9);
@@ -213,6 +279,8 @@
 
 @media (min-width: 640px) {
   :root {
+    --docs-layout-pad-x: var(--pad-x-md);
+    --docs-header-zone: calc(var(--header-row-height) + var(--pad-x-md));
     --supports-title-size: calc(var(--head) / 1.6);
     --supports-intro-size: var(--text-lead);
     --supports-wheel-panel-title-size: calc(var(--head) / 2.667);
@@ -220,20 +288,22 @@
     --supports-switch-btn-size: var(--text-sm);
     --supports-formats-label-size: var(--text-sm);
     --supports-tag-size: calc(var(--head) / 5.12);
-    --supports-why-size: var(--text-sm);
-    --supports-why-title-size: calc(var(--head) / 2.667);
     --supports-formats-body-h: calc(var(--head) * 2);
     --about-title-size: calc(var(--head) / 1.6);
-    --about-intro-size: var(--text-lead);
     --about-aside-text-size: var(--text-md);
     --how-lead-size: var(--text-lead);
     --how-step-title-size: var(--text-lead);
     --how-step-text-size: var(--text-md);
+    --docs-title-size: calc(var(--head) / 1.454);
+    --docs-lead-size: var(--text-lead);
   }
 }
 
 @media (min-width: 1024px) {
   :root {
+    --docs-layout-pad-x: var(--pad-x-lg);
+    --docs-sidebar-w: 13.5rem;
+    --docs-header-zone: calc(var(--header-row-height) + var(--pad-x-lg));
     --supports-container-pad-x-lg: calc(var(--head) / 2.5);
     --supports-title-size: calc(var(--head) / 1.454);
     --supports-intro-size: var(--text-lead-lg);
@@ -241,17 +311,15 @@
     --supports-wheel-panel-lead-size: calc(var(--head) / 5.12);
     --supports-formats-label-size: calc(var(--head) / 4);
     --supports-tag-size: calc(var(--head) / 4.571);
-    --supports-why-title-size: var(--text-lead);
     --supports-aside-w: calc(var(--head) * 10);
     --supports-layout-gap: var(--head);
     --supports-wheel-size: calc(var(--head) * 8.5);
     --supports-formats-body-h: calc(var(--head) * 2.35);
     --about-title-size: calc(var(--head) / 1.454);
-    --about-intro-size: var(--text-lead-lg);
     --about-aside-text-size: var(--text-md);
-    --about-aside-w: calc(var(--head) * 10);
     --about-layout-gap: var(--head);
     --about-points-gap: var(--head);
+    --about-faq-pad-y: calc(var(--head) / 6.4);
     --how-step-title-size: calc(var(--head) / 2.667);
     --how-step-text-size: var(--text-lead);
     --how-step-col-max: 24rem;

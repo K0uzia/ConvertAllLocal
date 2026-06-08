@@ -1,66 +1,56 @@
 ---
+import DocsShell from '../../components/Docs/DocsShell.astro';
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/pages/documentation.css';
 import { articlesForCategory, docCategories } from '../../data/documentation';
-import { brandName } from '../../data/site';
+import { brandName, pageUrl } from '../../data/site';
 ---
 
 <Layout
-  title={`Documentations - ${brandName}`}
-  description={`Documentations ${brandName} : convertisseur web et application desktop, formats, limites et périmètre.`}
+  layout="docs"
+  title={`Documentation - ${brandName}`}
+  description={`Documentation ${brandName} : convertisseur web et application desktop, formats, limites et périmètre.`}
   canonicalPath="/documentation/"
 >
-  <div class="docs">
-    <div class="docs__container">
-      <header class="docs__head">
-        <h1 class="docs__title">
-          <i class="docs__title-icon fa-solid fa-book" aria-hidden="true"></i>
-          <span>Documentation</span>
-        </h1>
-        <p class="docs__lead">
-          Guides par environnement : ce que le site peut convertir dans le navigateur, et ce qui est
-          prévu pour l'application desktop.
-        </p>
-      </header>
+  <DocsShell>
+    <header class="docs__head">
+      <h1 class="docs__title">Documentation</h1>
+      <p class="docs__lead">
+        Guides techniques pour le convertisseur {brandName} : formats pris en charge, limites du
+        navigateur et périmètre de l'application desktop. Tout le traitement reste local, sans envoi
+        de fichiers sur un serveur.
+      </p>
+      <p class="docs__lead">
+        Commencez par <a href={pageUrl('documentation/web/conversions/')}>Conversions navigateur</a>{' '}
+        si vous utilisez <a href={pageUrl('convertir/')}>/convertir</a>.
+      </p>
+    </header>
 
-      <div class="docs__categories">
-        {
-          docCategories.map((category) => (
-            <section class="docs__category" aria-labelledby={`docs-cat-${category.id}`}>
-              <div class="docs__category-head">
-                <i class={`${category.icon} docs__category-icon`} aria-hidden="true" />
-                <div>
-                  <h2 class="docs__category-title" id={`docs-cat-${category.id}`}>
-                    {category.title}
-                  </h2>
-                  <p class="docs__category-desc">{category.description}</p>
-                </div>
-              </div>
-              <div class="docs__grid">
-                {articlesForCategory(category.id).map((article) => (
-                  <a class="docs__card" href={article.href}>
-                    <span class="docs__card-tag">{category.title}</span>
-                    <h3 class="docs__card-title">{article.title}</h3>
-                    <p class="docs__card-desc">{article.description}</p>
-                    <p class="docs__card-meta">
-                      Mis à jour le{' '}
-                      {new Date(article.updated).toLocaleDateString('fr-FR', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </p>
-                    <span class="docs__card-cta">
-                      Lire
-                      <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
-                    </span>
+    <div class="docs__index">
+      {
+        docCategories.map((category) => (
+          <section
+            class:list={['docs__index-group', `docs__index-group--${category.id}`]}
+            aria-labelledby={`docs-index-${category.id}`}
+          >
+            <h2 class="docs__index-cat" id={`docs-index-${category.id}`}>
+              <i class={category.icon} aria-hidden="true"></i>
+              <span>{category.title}</span>
+            </h2>
+            <p class="docs__index-desc">{category.description}</p>
+            <ul class="docs__index-list">
+              {articlesForCategory(category.id).map((article) => (
+                <li class="docs__index-item">
+                  <a class="docs__index-link" href={article.href}>
+                    <span class="docs__index-link-title">{article.title}</span>
+                    <span class="docs__index-link-desc">{article.description}</span>
                   </a>
-                ))}
-              </div>
-            </section>
-          ))
-        }
-      </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
     </div>
-  </div>
+  </DocsShell>
 </Layout>

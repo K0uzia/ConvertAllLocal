@@ -1,8 +1,4 @@
-import {
-  defaultOutputByCategory,
-  outputFormatById,
-  type OutputFormatOption,
-} from '../../data/converter-output-formats.js';
+import { defaultOutputByCategory, outputFormatById } from '../../data/converter-output-formats.js';
 import type { ConverterCategory } from '../../data/converter-limits.js';
 
 const PREFIX = 'cal:';
@@ -24,11 +20,6 @@ export function resetOutputFormat(category: ConverterCategory): void {
   setOutputFormat(category, defaultOutputByCategory[category]);
 }
 
-export function resetAllOutputFormats(): void {
-  const categories: ConverterCategory[] = ['image', 'audio', 'document'];
-  for (const cat of categories) resetOutputFormat(cat);
-}
-
 export function listKeys(): string[] {
   if (typeof localStorage === 'undefined') return [];
   const keys: string[] = [];
@@ -46,18 +37,3 @@ export function clearAll(): void {
   }
 }
 
-export function storedOutputLabel(category: ConverterCategory): string {
-  const id = getOutputFormat(category);
-  return outputFormatById(id)?.label ?? id;
-}
-
-const CATEGORY_LABELS: Record<ConverterCategory, string> = {
-  image: 'Image',
-  audio: 'Audio',
-  document: 'Document',
-};
-
-export function allStoredOutputsSummary(): string {
-  const parts: ConverterCategory[] = ['image', 'audio', 'document'];
-  return parts.map((c) => `${CATEGORY_LABELS[c]}: ${storedOutputLabel(c)}`).join(', ');
-}

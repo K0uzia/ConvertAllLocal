@@ -9,7 +9,14 @@ const year = new Date().getFullYear();
   <div class="footer__container">
     <aside class="footer__brand">
       <a href={pageUrl('/')} class="footer__logo" aria-label={`Accueil ${brandName}`}>
-        <img class="footer__logo-icon" src={assetUrl('logo.svg')} alt="" decoding="async" />
+        <img
+          class="footer__logo-icon"
+          src={assetUrl('logo.svg')}
+          alt=""
+          width="128"
+          height="128"
+          decoding="async"
+        />
         <span class="footer__logo-text">{brandName}</span>
       </a>
       <p class="footer__copy">© {year} {brandName}. Tous droits réservés.</p>

@@ -1,113 +1,58 @@
 ---
 import './Hero.css';
-import { assetUrl, homeSections } from '../../data/site';
+import Header from '../Header/Header.astro';
+import HeroGeoMotif from './HeroGeoMotif.astro';
 ---
 
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__bg finisher-header" aria-hidden="true"></div>
-  <div class="hero__container">
-    <div class="hero__content">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__bg-fade" aria-hidden="true"></div>
+    <HeroGeoMotif uid="hero-base" />
+    <div class="hero-geo__halo">
+      <HeroGeoMotif variant="accent" uid="hero-halo" />
+    </div>
+  </div>
+  <div class="hero__shell">
+  <div class="hero__main">
+    <div class="hero__container">
       <h1 class="hero__title" id="hero-title">
-        La conversion de fichiers,
-        <span class="hero__title-tail">
+        <span class="hero__title-group">
+          <span class="hero__title-line hero__title-line--primary">La conversion</span>
+          <span class="hero__title-line hero__title-line--primary">de fichiers</span>
+        </span>
+        <span class="hero__title-line hero__title-line--enfin">
           enfin
           <span class="hero__rotate" aria-label="gratuite, locale, rapide">
-            <span class="hero__rotate-sizer hero__title-accent" aria-hidden="true">gratuite</span>
-            <strong class="hero__title-accent hero__rotate-clip" aria-hidden="true">
+            <span class="hero__rotate-sizer" aria-hidden="true">gratuite</span>
+            <span class="hero__rotate-clip">
               <span class="hero__rotate-track">
                 <span class="hero__rotate-word">gratuite</span>
                 <span class="hero__rotate-word">locale</span>
                 <span class="hero__rotate-word">rapide</span>
                 <span class="hero__rotate-word">gratuite</span>
               </span>
-            </strong>
+            </span>
           </span>
         </span>
       </h1>
 
       <p class="hero__lead">
-        Images, audio, documents et PDF : conversion locale dans le navigateur, sans upload ni
-        compte. Vos fichiers restent sur votre machine, open source et sans limite cachée.
+        <span class="hero__lead-part">
+          Images, audio, documents et PDF&nbsp;: conversion locale dans le navigateur, sans upload
+          ni&nbsp;compte.
+          Vos fichiers restent sur votre machine, open&nbsp;source et sans limite cachée.
+        </span>
       </p>
-
-      <div class="hero__actions">
-        <a href={homeSections.convertir} class="btn btn--primary hero__btn hero__btn--primary">
-          Convertir
-          <i class="hero__btn-icon fa-solid fa-arrow-right-long" aria-hidden="true"></i>
-        </a>
-        <a href={homeSections.formats} class="btn btn--secondary hero__btn hero__btn--secondary">Voir les formats</a>
-      </div>
     </div>
   </div>
 
-  <a class="hero__scroll" href={homeSections.formats} aria-label="Faire défiler vers la suite">
-    <svg
-      class="hero__scroll-ico"
-      xmlns="http://www.w3.org/2000/svg"
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M6 9L12 15L18 9"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path
-        d="M6 4L12 10L18 4"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        opacity="0.55"
-      />
-    </svg>
-  </a>
+  <Header variant="hero" />
+  </div>
 </section>
 
-<script src={assetUrl('finisher-header.es5.min.js')} is:inline></script>
-<script is:inline>
-  (function () {
-    function initHeroFinisher() {
-      if (!document.querySelector('.hero .finisher-header')) return;
-      document.querySelector('#finisher-canvas')?.remove();
-      new FinisherHeader({
-        className: 'finisher-header',
-        count: 10,
-        size: {
-          min: 2,
-          max: 40,
-          pulse: 0,
-        },
-        speed: {
-          x: {
-            min: 0,
-            max: 0.8,
-          },
-          y: {
-            min: 0,
-            max: 0.2,
-          },
-        },
-        colors: {
-          background: getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim(),
-          particles: ['#ff926b', '#87ddfe', '#acaaff', '#1bffc2', '#f9a5fe'],
-        },
-        blending: 'screen',
-        opacity: {
-          center: 1,
-          edge: 1,
-        },
-        skew: -1.5,
-        shapes: ['t', 'c', 's'],
-      });
-    }
+<script>
+  import { initHeaderPin } from '../Header/header-pin.ts';
 
-    initHeroFinisher();
-    document.addEventListener('astro:page-load', initHeroFinisher);
-  })();
+  initHeaderPin();
+  document.addEventListener('astro:page-load', initHeaderPin);
 </script>

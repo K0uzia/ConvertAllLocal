@@ -10,7 +10,7 @@
   margin: calc(var(--head) * 1.25) 0 0 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: var(--color-title);
   background-color: transparent;
   transition: none;
@@ -27,7 +27,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-title);
   font-size: calc(var(--head) / 2.667);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -51,7 +51,7 @@
   margin: calc(var(--head) / 6.4) 0 var(--converter-gap) 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
@@ -73,10 +73,10 @@
   border-width: 1px;
   border-style: solid;
   border-color: var(--color-accent);
-  border-radius: var(--converter-settings-radius);
-  font-family: var(--font-sans);
+  border-radius: var(--radius-panel);
+  font-family: var(--font);
   color: inherit;
-  background: transparent;
+  background-color: var(--color-surface);
   overflow: visible;
   z-index: auto;
 }
@@ -100,7 +100,7 @@
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   color: inherit;
   background: transparent;
@@ -129,7 +129,7 @@
   border-bottom-width: 1px;
   border-style: solid;
   border-color: var(--color-accent);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
@@ -249,7 +249,7 @@
   padding: calc(var(--head) / 12.8) calc(var(--head) / 9);
   padding-right: calc(var(--head) / 3.2);
   border-radius: var(--converter-settings-radius);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -297,7 +297,7 @@
 }
 
 .converter-settings__table code {
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-size: 0.92em;
 }
 
@@ -311,7 +311,7 @@
   margin: 0;
   padding: calc(var(--head) / 12.8) calc(var(--head) / 6.4);
   border-radius: var(--converter-settings-radius);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -348,7 +348,7 @@
   margin: auto;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: var(--color-title);
   background: transparent;
   transition: none;
@@ -375,11 +375,11 @@
   padding: var(--converter-modal-pad);
   border-width: 1px;
   border-style: solid;
-  border-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
-  border-radius: var(--converter-settings-radius);
-  font-family: var(--font-sans);
+  border-color: var(--color-border-strong);
+  border-radius: var(--radius-panel);
+  font-family: var(--font);
   color: inherit;
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   box-shadow: var(--shadow-sm);
   transition: none;
   overflow: visible;
@@ -395,7 +395,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-modal-title-size);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -419,7 +419,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-modal-text-size);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
@@ -441,7 +441,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;

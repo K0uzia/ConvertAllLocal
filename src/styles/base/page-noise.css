@@ -8,9 +8,9 @@ html {
 }
 
 .supports__switch {
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
 }
 
 .supports__tag {
-  background-color: var(--color-bg);
+  background-color: var(--color-surface-raised);
 }

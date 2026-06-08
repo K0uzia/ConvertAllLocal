@@ -1,5 +1,6 @@
 ---
 import './ConverterSettings.css';
+import { brandName } from '../../data/site';
 ---
 
 <section class="converter-settings" data-converter-settings aria-labelledby="converter-settings-title">
@@ -98,7 +99,7 @@ import './ConverterSettings.css';
                 type="button"
                 class="btn btn--secondary converter-settings__btn"
                 data-settings-clear-storage
-                aria-label="Effacer toutes les données mémorisées par ConvertAllLocal sur cet appareil"
+                aria-label={`Effacer toutes les données mémorisées par ${brandName} sur cet appareil`}
               >
                 Tout effacer
               </button>
@@ -121,7 +122,7 @@ import './ConverterSettings.css';
         <span>Effacer la mémoire locale ?</span>
       </h3>
       <p class="converter-settings__modal-text" id="converter-settings-clear-desc">
-        Tous les réglages et la file mémorisés par ConvertAllLocal sur cet appareil seront supprimés.
+        Tous les réglages et la file mémorisés par {brandName} sur cet appareil seront supprimés.
         Cette action est irréversible.
       </p>
       <div class="converter-settings__modal-actions">

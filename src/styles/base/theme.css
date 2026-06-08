@@ -1,0 +1,30 @@
+/**
+ * Thème global (référence hero + header) : surfaces, titres de section, séparateurs.
+ */
+
+:is(
+  .how__title,
+  .supports__title,
+  .about__title,
+  .convertir-page__title,
+  .docs__title,
+  .docs__article-title,
+  .privacy__title,
+  .privacy__heading,
+  .converter-settings__title,
+  .converter-settings__modal-title
+) {
+  font-family: var(--font-title);
+}
+
+.footer {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: var(--color-border);
+}
+
+.about {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: var(--color-border);
+}

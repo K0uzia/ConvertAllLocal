@@ -1,0 +1,35 @@
+---
+/** Grille diagonale discrète, pleine page (--site-geo-*). */
+interface Props {
+  variant?: 'base' | 'accent';
+}
+
+const { variant = 'base' } = Astro.props;
+const step = 56;
+const patternId = variant === 'accent' ? 'site-geo-grid-accent' : 'site-geo-grid';
+
+const lineA =
+  variant === 'accent'
+    ? 'site-geo__line site-geo__line--accent'
+    : 'site-geo__line';
+const lineB =
+  variant === 'accent'
+    ? 'site-geo__line site-geo__line--accent site-geo__line--accent-bright'
+    : 'site-geo__line site-geo__line--bright';
+---
+
+<svg
+  class:list={['site-geo__svg', variant === 'accent' && 'site-geo__svg--accent']}
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+  preserveAspectRatio="none"
+>
+  <defs>
+    <pattern id={patternId} width={step} height={step} patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2={step} y2={step} class={lineA} />
+      <line x1={step} y1="0" x2="0" y2={step} class={lineB} />
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill={`url(#${patternId})`} />
+</svg>

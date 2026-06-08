@@ -1,42 +1,48 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import DocsArticleFooter from '../../../components/Docs/DocsArticleFooter.astro';
+import DocsShell from '../../../components/Docs/DocsShell.astro';
 import '../../../styles/pages/documentation.css';
-import { categoryById } from '../../../data/documentation';
-import { brandName, pageUrl } from '../../../data/site';
+import { adjacentArticles, articleBySlug, categoryById } from '../../../data/documentation';
+import { buildBreadcrumbJsonLd } from '../../../data/seo-jsonld.ts';
+import { brandName, pageUrl, siteUrl } from '../../../data/site';
 
-const category = categoryById('web');
-const docsIndex = pageUrl('documentation/');
-const updated = '2026-06-05';
+const article = articleBySlug('conversions')!;
+const category = categoryById(article.category);
+const { prev, next } = adjacentArticles('conversions');
+const canonicalPath = '/documentation/web/conversions/';
+const pageUrlAbs = new URL(canonicalPath, siteUrl).href;
+const docsIndexAbs = new URL(pageUrl('documentation/'), siteUrl).href;
+const updated = article.updated;
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: 'Documentation', url: docsIndexAbs },
+  { name: category?.title ?? 'Web', url: docsIndexAbs },
+  { name: article.title, url: pageUrlAbs },
+]);
 ---
 
 <Layout
-  title={`Conversions navigateur - Documentation - ${brandName}`}
-  description="Formats, limites et matrices de conversion du convertisseur web ConvertAllLocal : images, audio, documents et PDF, 100 % local."
-  canonicalPath="/documentation/web/conversions/"
+  layout="docs"
+  title={`${article.title} - Documentation - ${brandName}`}
+  description={`Formats, limites et matrices de conversion du convertisseur web ${brandName} : images, audio, documents et PDF, 100 % local.`}
+  canonicalPath={canonicalPath}
 >
-  <article class="docs">
-    <div class="docs__container">
-      <nav class="docs-article__nav" aria-label="Fil d'Ariane">
-        <a href={docsIndex}>Documentation</a>
-        <span class="docs-article__nav-sep" aria-hidden="true">/</span>
-        <span>{category?.title ?? 'Web'}</span>
-        <span class="docs-article__nav-sep" aria-hidden="true">/</span>
-        <span>Conversions navigateur</span>
-      </nav>
-
-      <header class="docs-article__head">
-        <span class="docs-article__tag">Web</span>
-        <h1 class="docs-article__title">Conversions navigateur</h1>
-        <p class="docs-article__lead">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <DocsShell currentArticle={article}>
+    <article>
+      <header class="docs__article-head">
+        <p class="docs__article-kicker">{category?.title ?? 'Web'}</p>
+        <h1 class="docs__article-title">{article.title}</h1>
+        <p class="docs__lead">
           Traitement 100 % local sur <a href={pageUrl('convertir/')}>/convertir</a>. Aucun fichier
           n'est envoyé sur un serveur.
         </p>
       </header>
 
-      <div class="docs-article__body">
-        <section class="docs-article__section" aria-labelledby="doc-web-limits">
-          <h2 class="docs-article__heading" id="doc-web-limits">Limites de taille</h2>
-          <div class="docs-callout">
+      <div class="docs__article">
+        <section class="docs__section" aria-labelledby="doc-web-limits">
+          <h2 class="docs__section-title" id="doc-web-limits">Limites de taille</h2>
+          <div class="docs__callout">
             <strong>24 Mo</strong> par lot (32 Mo si le navigateur signale au moins 8 Go de RAM),
             <strong>16 Mo</strong> par fichier image, audio ou PDF, <strong>8 Mo</strong> par fichier
             texte.
@@ -47,15 +53,15 @@ const updated = '2026-06-05';
           </p>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-web-images">
-          <h2 class="docs-article__heading" id="doc-web-images">Images</h2>
+        <section class="docs__section" aria-labelledby="doc-web-images">
+          <h2 class="docs__section-title" id="doc-web-images">Images</h2>
           <p>
             <strong>Entrées web :</strong> PNG, JPEG, WebP, AVIF, GIF, SVG, BMP, TIFF, ICO, JXL, HEIC,
             HEIF, APNG (décodage selon le navigateur pour JXL et HEIC).
           </p>
           <p>Conversion de l'un vers l'autre (matrice complète) et export PDF.</p>
-          <div class="docs-table-wrap">
-            <table class="docs-table">
+          <div class="docs__table-wrap">
+            <table class="docs__table">
               <thead>
                 <tr>
                   <th scope="col">Sorties image</th>
@@ -88,8 +94,8 @@ const updated = '2026-06-05';
           </p>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-web-audio">
-          <h2 class="docs-article__heading" id="doc-web-audio">Audio</h2>
+        <section class="docs__section" aria-labelledby="doc-web-audio">
+          <h2 class="docs__section-title" id="doc-web-audio">Audio</h2>
           <p>
             <strong>Entrées web :</strong> WAV, MP3, OGG, Opus, M4A, AAC.
             <strong>Sorties :</strong> WAV, MP3, OGG (matrice complète entre ces trois formats, depuis
@@ -101,10 +107,10 @@ const updated = '2026-06-05';
           </p>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-web-documents">
-          <h2 class="docs-article__heading" id="doc-web-documents">Documents texte</h2>
-          <div class="docs-table-wrap">
-            <table class="docs-table">
+        <section class="docs__section" aria-labelledby="doc-web-documents">
+          <h2 class="docs__section-title" id="doc-web-documents">Documents texte</h2>
+          <div class="docs__table-wrap">
+            <table class="docs__table">
               <thead>
                 <tr>
                   <th scope="col">Entrée</th>
@@ -137,10 +143,10 @@ const updated = '2026-06-05';
           </div>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-web-pdf">
-          <h2 class="docs-article__heading" id="doc-web-pdf">PDF</h2>
-          <div class="docs-table-wrap">
-            <table class="docs-table">
+        <section class="docs__section" aria-labelledby="doc-web-pdf">
+          <h2 class="docs__section-title" id="doc-web-pdf">PDF</h2>
+          <div class="docs__table-wrap">
+            <table class="docs__table">
               <thead>
                 <tr>
                   <th scope="col">Sens</th>
@@ -161,28 +167,17 @@ const updated = '2026-06-05';
           </div>
         </section>
 
-        <section class="docs-article__section" aria-labelledby="doc-web-desktop">
-          <h2 class="docs-article__heading" id="doc-web-desktop">Réservé à l'application desktop</h2>
+        <section class="docs__section" aria-labelledby="doc-web-desktop">
+          <h2 class="docs__section-title" id="doc-web-desktop">Réservé à l'application desktop</h2>
           <p>
             Vidéo, Office (DOCX, ODT…), EPUB, RTF, PDF scannés (OCR), conversions PDF avancées (Word,
             images de toutes les pages). Voir
             <a href={pageUrl('documentation/application/apercu/')}>Application desktop</a>.
           </p>
         </section>
-
-        <p class="docs-article__updated">
-          Dernière mise à jour :{' '}
-          {new Date(updated).toLocaleDateString('fr-FR', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          })}
-        </p>
-        <a class="docs-article__back" href={docsIndex}>
-          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-          Retour à la documentation
-        </a>
       </div>
-    </div>
-  </article>
+
+      <DocsArticleFooter updated={updated} prev={prev} next={next} />
+    </article>
+  </DocsShell>
 </Layout>

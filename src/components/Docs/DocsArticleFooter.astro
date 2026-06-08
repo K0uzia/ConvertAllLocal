@@ -1,0 +1,42 @@
+---
+import type { DocArticle } from '../../data/documentation';
+
+interface Props {
+  updated: string;
+  prev?: DocArticle;
+  next?: DocArticle;
+}
+
+const { updated, prev, next } = Astro.props;
+const updatedLabel = new Date(updated).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<footer class="docs__foot">
+  <p class="docs__updated">Dernière mise à jour : {updatedLabel}</p>
+  {
+    prev || next ? (
+      <nav class="docs__pager" aria-label="Navigation entre guides">
+        {prev ? (
+          <a class="docs__pager-link docs__pager-link--prev" href={prev.href}>
+            <span class="docs__pager-kicker">Précédent</span>
+            <span class="docs__pager-title">{prev.title}</span>
+          </a>
+        ) : (
+          <span class="docs__pager-spacer" aria-hidden="true" />
+        )}
+        {next ? (
+          <a class="docs__pager-link docs__pager-link--next" href={next.href}>
+            <span class="docs__pager-kicker">Suivant</span>
+            <span class="docs__pager-title">{next.title}</span>
+          </a>
+        ) : (
+          <span class="docs__pager-spacer" aria-hidden="true" />
+        )}
+      </nav>
+    ) : null
+  }
+</footer>

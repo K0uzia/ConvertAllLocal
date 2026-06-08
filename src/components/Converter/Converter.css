@@ -12,7 +12,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: var(--color-title);
   background-color: transparent;
   transition: none;
@@ -26,7 +26,7 @@
   margin: 0 0 var(--converter-gap) 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -42,7 +42,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -60,7 +60,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   opacity: 0;
@@ -84,7 +84,7 @@
   border-style: dashed;
   border-color: var(--color-accent);
   border-radius: var(--radius-md);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background-color: transparent;
   text-align: left;
@@ -119,7 +119,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-normal);
   line-height: var(--line-relaxed);
@@ -148,7 +148,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -168,7 +168,8 @@
   padding: var(--converter-dropzone-filled-pad);
   border-style: dashed;
   border-color: var(--color-accent);
-  background-color: transparent;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-panel);
   text-align: left;
   cursor: default;
 }
@@ -186,7 +187,7 @@
   border-style: solid;
   border-color: var(--color-error);
   border-radius: var(--radius-md);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   line-height: var(--line-relaxed);
@@ -213,7 +214,7 @@
   padding: 0;
   border-width: 0;
   list-style: none;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   text-align: left;
   background: transparent;
@@ -228,7 +229,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -250,11 +251,11 @@
   border-style: solid;
   border-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
   border-radius: var(--converter-settings-radius);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font);
   line-height: 1.45;
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   transition:
     background-color var(--ease),
     border-color var(--ease);
@@ -262,22 +263,22 @@
 }
 
 .converter__dropzone-file:hover .converter__dropzone-file-row {
-  background-color: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg));
+  background-color: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
   border-color: var(--color-accent);
 }
 
 .converter__dropzone-file--success .converter__dropzone-file-row {
-  background-color: color-mix(in srgb, var(--color-success) 15%, var(--color-bg));
+  background-color: color-mix(in srgb, var(--color-success) 15%, var(--color-surface));
   border-color: var(--color-success);
 }
 
 .converter__dropzone-file--error .converter__dropzone-file-row {
-  background-color: color-mix(in srgb, var(--color-error) 12%, var(--color-bg));
+  background-color: color-mix(in srgb, var(--color-error) 12%, var(--color-surface));
   border-color: var(--color-error);
 }
 
 .converter__dropzone-file--converting .converter__dropzone-file-row {
-  background-color: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
+  background-color: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
   border-color: var(--color-accent);
 }
 
@@ -294,7 +295,7 @@
   border-color: var(--color-accent);
   border-radius: calc(var(--radius-md) * 1.1);
   color: var(--color-accent);
-  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg));
+  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
 }
 
 .converter__dropzone-file-icon-glyph {
@@ -312,13 +313,13 @@
   border-style: solid;
   border-color: var(--color-accent);
   border-radius: calc(var(--radius-md) * 0.75);
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-size: calc(var(--head) / 6.8);
   font-weight: var(--weight-bold);
   line-height: 1;
   letter-spacing: 0.04em;
   color: var(--color-accent);
-  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg));
+  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -339,7 +340,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -380,7 +381,7 @@
   flex-shrink: 0;
   min-width: var(--converter-file-size-slot);
   height: 100%;
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-bold);
   line-height: 1;
@@ -413,7 +414,7 @@
 
 .converter__dropzone-file-field-label,
 .converter__dropzone-file-size-label {
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -431,7 +432,7 @@
   gap: calc(var(--head) / 20);
   flex-shrink: 0;
   height: 100%;
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-bold);
   line-height: 1;
@@ -463,12 +464,12 @@
   border-width: 1px;
   border-style: solid;
   border-radius: 9999px;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-bold);
   line-height: 1;
   color: var(--color-text);
-  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg));
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
   border-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
   transition:
     color var(--ease),
@@ -497,7 +498,7 @@
 .converter__dropzone-file-status--queued {
   color: var(--color-waiting);
   border-color: var(--color-waiting);
-  background: color-mix(in srgb, var(--color-waiting) 18%, var(--color-bg));
+  background: color-mix(in srgb, var(--color-waiting) 18%, var(--color-surface));
 }
 
 .converter__dropzone-file-status--converting {
@@ -519,7 +520,7 @@
 
 .converter__dropzone-file--success .converter__dropzone-file-field--format {
   border-color: var(--color-accent);
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
 }
 
 .converter__dropzone-file--success .converter__dropzone-file-field--format .converter__dropzone-file-field-label {
@@ -545,7 +546,7 @@
   box-sizing: border-box;
   border-width: 0;
   border-radius: calc(var(--radius-md) * 0.85);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-medium);
   line-height: var(--line-relaxed);
@@ -583,7 +584,7 @@
   border-radius: 9999px;
   overflow: hidden;
   color: var(--color-accent);
-  background-color: color-mix(in srgb, var(--color-accent) 15%, var(--color-bg));
+  background-color: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface));
   accent-color: var(--color-accent);
 }
 
@@ -625,7 +626,7 @@
   margin: 0;
   padding: 0 calc(var(--head) / 9);
   border-radius: 9999px;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-bold);
   line-height: 1;
@@ -779,7 +780,7 @@
   margin: calc(var(--head) / 10.24) 0 0 0;
   padding: calc(var(--head) / 8) 0 0 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -797,7 +798,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -816,7 +817,7 @@
   margin: 0;
   padding: calc(var(--head) / 16) calc(var(--head) / 8);
   border-radius: var(--radius-md);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -835,7 +836,7 @@
   margin: 0;
   padding: calc(var(--head) / 16) calc(var(--head) / 8);
   border-radius: var(--radius-md);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);
@@ -864,7 +865,7 @@
   padding: calc(var(--head) / 14) calc(var(--head) / 8);
   border-style: dashed;
   border-radius: var(--radius-md);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-medium);
   line-height: var(--line-relaxed);
@@ -886,7 +887,7 @@
   margin: var(--converter-gap) auto 0 auto;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -918,7 +919,7 @@
   border-style: solid;
   border-color: var(--color-accent);
   border-radius: var(--radius-md);
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   line-height: var(--converter-file-line);
   color: inherit;
@@ -943,7 +944,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -958,7 +959,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--converter-file-font-meta);
   font-weight: var(--weight-medium);
   line-height: var(--converter-file-line);
@@ -976,7 +977,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-size: var(--converter-file-font);
   font-weight: var(--weight-medium);
   line-height: var(--converter-file-line);
@@ -988,7 +989,7 @@
 }
 
 .converter__meta-value-brand {
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-weight: var(--weight-bold);
   color: var(--color-accent);
 }
@@ -1016,7 +1017,7 @@
   margin: 0;
   padding: 0;
   border-width: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   color: inherit;
   background: transparent;
   transition: none;
@@ -1052,7 +1053,7 @@
   padding: var(--hero-btn-pad-y) var(--hero-btn-pad-x);
   white-space: nowrap;
   border-radius: 9999px;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   line-height: var(--line-tight);

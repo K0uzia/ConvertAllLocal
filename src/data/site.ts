@@ -1,5 +1,8 @@
-/** Nom affiché dans l'interface (ConvertAllLocal = Convert All Local). */
-export const brandName = 'Convert All Local';
+/** Nom du produit affiché dans l'interface. */
+export const brandName = 'Converter';
+
+/** Société éditrice (site hébergé en sous-domaine de kouzia.com). */
+export const companyName = 'Kouzia';
 
 /** Identifiant dépôt GitHub (sans espaces). */
 export const brandRepo = 'ConvertAllLocal';

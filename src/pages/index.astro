@@ -4,13 +4,17 @@ import Hero from '../components/Hero/Hero.astro';
 import HowItWorks from '../components/HowItWorks/HowItWorks.astro';
 import Supports from '../components/Supports/Supports.astro';
 import About from '../components/About/About.astro';
-import { brandName, defaultDescription } from '../data/site';
+import { buildFaqPageJsonLd } from '../data/seo-jsonld.ts';
+import { brandName, companyName, defaultDescription, homeSections, siteUrl } from '../data/site';
 import '../styles/pages/index.css';
 
-const pageTitle = `${brandName} - Kouzia`;
+const pageTitle = `${brandName} - ${companyName}`;
+const faqJsonLd = buildFaqPageJsonLd(new URL(homeSections.apropos, siteUrl).href);
 ---
 
 <Layout title={pageTitle} description={defaultDescription} canonicalPath="/">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqJsonLd)} />
+  <div slot="site-header" hidden aria-hidden="true"></div>
   <Hero />
   <HowItWorks />
   <Supports />

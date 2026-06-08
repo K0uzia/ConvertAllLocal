@@ -1,0 +1,18 @@
+/* Corps : --font (hérité via body). Titres : --font-title. */
+:is(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .hero__title,
+  .hero__title-group,
+  .hero__title-line,
+  .hero__rotate,
+  .hero__rotate-sizer,
+  .hero__rotate-track,
+  .hero__rotate-word
+) {
+  font-family: var(--font-title);
+}

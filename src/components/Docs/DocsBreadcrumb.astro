@@ -1,0 +1,40 @@
+---
+import { categoryById, type DocArticle } from '../../data/documentation';
+import { pageUrl } from '../../data/site';
+
+interface Props {
+  currentArticle?: DocArticle;
+}
+
+const { currentArticle } = Astro.props;
+const docsIndex = pageUrl('documentation/');
+const category = currentArticle ? categoryById(currentArticle.category) : undefined;
+---
+
+<nav class="docs__breadcrumb" aria-label="Fil d'Ariane">
+  <ol class="docs__breadcrumb-list">
+    <li class="docs__breadcrumb-item">
+      <a class="docs__breadcrumb-link" href={docsIndex}>Documentation</a>
+    </li>
+    {
+      currentArticle ? (
+        <>
+          <li class="docs__breadcrumb-item" aria-hidden="true">
+            <span class="docs__breadcrumb-sep">/</span>
+          </li>
+          <li class="docs__breadcrumb-item">
+            <span class="docs__breadcrumb-current">{category?.title ?? currentArticle.category}</span>
+          </li>
+          <li class="docs__breadcrumb-item" aria-hidden="true">
+            <span class="docs__breadcrumb-sep">/</span>
+          </li>
+          <li class="docs__breadcrumb-item">
+            <span class="docs__breadcrumb-current" aria-current="page">
+              {currentArticle.title}
+            </span>
+          </li>
+        </>
+      ) : null
+    }
+  </ol>
+</nav>

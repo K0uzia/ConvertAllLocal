@@ -1,5 +1,6 @@
 ---
 description: Interdit le tiret cadratin (—) ; préférer "-" seulement si nécessaire, pas en milieu de phrase
+globs: "{**/*,**/*.astro}"
 alwaysApply: true
 ---
 
@@ -13,7 +14,7 @@ alwaysApply: true
 
 ## Quand `-` est acceptable
 
-- **Titres de page** : `Convertir - ConvertAllLocal` (séparateur titre / marque).
+- **Titres de page** : `Convertir - Converter`, `Converter - Kouzia` (séparateur titre / marque).
 - **Listes techniques** : `Linux - AppImage`, `browser/ - conversion navigateur`.
 - **Plages ou noms composés** : `WebP 80 %`, chemins, identifiants, CLI.
 - **Tableaux** : cellule vide ou séparateur minimal si aucune autre formulation n'est possible (ex. `:` ou laisser vide).
