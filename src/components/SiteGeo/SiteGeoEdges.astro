@@ -1,0 +1,19 @@
+---
+import GeoEdge from './GeoEdge.astro';
+
+const siteGeoLeft = [
+  { size: 'lg' as const, rotate: 24, top: '12vh', accent: false },
+  { size: 'sm' as const, rotate: 51, top: '44vh', accent: true },
+  { size: 'md' as const, rotate: 33, top: '74vh', accent: false },
+];
+
+const siteGeoRight = [
+  { size: 'md' as const, rotate: -19, top: '20vh', accent: true },
+  { size: 'lg' as const, rotate: -44, top: '58vh', accent: false },
+];
+---
+
+<div class="site-geo-edges" aria-hidden="true">
+  <GeoEdge side="left" squares={siteGeoLeft} />
+  <GeoEdge side="right" squares={siteGeoRight} />
+</div>

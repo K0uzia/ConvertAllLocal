@@ -2,9 +2,9 @@
 @import url('./base/variables.css');
 @import url('./base/typography.css');
 @import url('./base/theme.css');
-@import url('./base/site-geo.css');
 @import url('./base/buttons.css');
 @import url('./base/section-heading.css');
+@import url('./base/section-layout.css');
 @import url('./base/reset.css');
 @import url('./base/page-noise.css');
 @import url('./base/scrollbar.css');

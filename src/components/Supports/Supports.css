@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
   margin: 0;
-  padding: var(--supports-pad-y) 0;
+  padding: var(--home-section-gap) 0 var(--supports-pad-y);
   font-family: var(--font);
   color: var(--color-title);
   background-color: transparent;
@@ -18,7 +18,8 @@
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--supports-container-pad-x);
+  padding-top: 0;
+  padding-bottom: 0;
   border-width: 0;
   font-family: var(--font);
   color: inherit;
@@ -26,18 +27,6 @@
   transition: none;
   overflow: visible;
   z-index: auto;
-}
-
-@media (min-width: 640px) {
-  .supports__container {
-    padding: 0 var(--supports-container-pad-x-sm);
-  }
-}
-
-@media (min-width: 1024px) {
-  .supports__container {
-    padding: 0 var(--supports-container-pad-x-lg);
-  }
 }
 
 .supports__layout {
@@ -599,10 +588,22 @@
   background: transparent;
 }
 
-.supports__switch .supports__switch-btn.btn--secondary:hover {
+.supports__switch .supports__switch-btn.btn--secondary:hover:not(.is-active) {
   border-color: transparent;
   color: var(--color-accent-hover);
   background: transparent;
+}
+
+.supports__switch .supports__switch-btn.btn--secondary.is-active {
+  border-color: transparent;
+  color: var(--header-cta-fg);
+  background-color: var(--color-accent);
+}
+
+.supports__switch .supports__switch-btn.btn--secondary.is-active:hover {
+  border-color: transparent;
+  color: var(--header-cta-fg);
+  background-color: var(--color-accent-hover);
 }
 
 .supports__switch-btn {
@@ -627,19 +628,6 @@
   z-index: auto;
 }
 
-.supports__switch-btn:hover {
-  color: var(--color-accent-hover);
-}
-
-.supports__switch-btn.is-active {
-  color: var(--header-cta-fg);
-  background-color: var(--color-accent);
-}
-
-.supports__switch-btn.is-active:hover {
-  background-color: var(--color-accent-hover);
-}
-
 .supports__formats-label {
   display: flex;
   flex-flow: row nowrap;
@@ -651,14 +639,15 @@
   min-height: 100%;
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: var(--supports-switch-btn-pad-y) var(--supports-switch-btn-pad-x);
   border-width: 0;
+  border-radius: var(--header-cta-radius);
   font-family: var(--font);
   font-size: var(--supports-formats-label-size);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-normal);
   line-height: var(--line-tight);
-  color: var(--color-text);
-  background: transparent;
+  color: var(--header-cta-fg);
+  background-color: var(--color-accent);
   transition: none;
   overflow: visible;
   z-index: auto;

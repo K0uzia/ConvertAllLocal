@@ -1,35 +1,22 @@
 ---
-/** Motif hero : carrés imbriqués + 2 axes centraux bright, fondu radial SVG. */
+/** Motif hero : carrés imbriqués. */
 interface Props {
   variant?: 'base' | 'accent';
-  uid?: string;
 }
 
-const { variant = 'base', uid = 'hero' } = Astro.props;
+const { variant = 'base' } = Astro.props;
 
 const cx = 600;
 const cy = 600;
-const gridSpan = 11;
-const gridStep = 56;
-const extent = gridSpan * gridStep;
 
 const squares = [
-  { half: 420, rotate: 0 },
-  { half: 360, rotate: 12 },
-  { half: 300, rotate: 24 },
-  { half: 240, rotate: 36 },
-  { half: 180, rotate: 48 },
-  { half: 120, rotate: 60 },
-  { half: 60, rotate: 72 },
+  { half: 600, rotate: 12 },
+  { half: 500, rotate: 24 },
+  { half: 400, rotate: 36 },
+  { half: 300, rotate: 48 },
+  { half: 200, rotate: 60 },
+  { half: 100, rotate: 72 },
 ];
-
-const axisLines = [
-  { x1: cx - extent, y1: cy - extent, x2: cx + extent, y2: cy + extent },
-  { x1: cx - extent, y1: cy + extent, x2: cx + extent, y2: cy - extent },
-];
-
-const fadeGradientId = `hero-geo-fade-gradient-${uid}`;
-const fadeMaskId = `hero-geo-fade-mask-${uid}`;
 ---
 
 <svg
@@ -40,31 +27,7 @@ const fadeMaskId = `hero-geo-fade-mask-${uid}`;
   aria-hidden="true"
   focusable="false"
 >
-  <defs>
-    <radialGradient id={fadeGradientId} cx="50%" cy="48%" r="52%">
-      <stop offset="0%" stop-color="white" stop-opacity="1" />
-      <stop offset="45%" stop-color="white" stop-opacity="0.9" />
-      <stop offset="72%" stop-color="white" stop-opacity="0.35" />
-      <stop offset="100%" stop-color="white" stop-opacity="0" />
-    </radialGradient>
-    <mask id={fadeMaskId}>
-      <rect width="1200" height="1200" fill={`url(#${fadeGradientId})`} />
-    </mask>
-  </defs>
-  <g class="hero-geo__lines" mask={`url(#${fadeMaskId})`}>
-    {
-      axisLines.map((line) => (
-        <line
-          x1={line.x1}
-          y1={line.y1}
-          x2={line.x2}
-          y2={line.y2}
-          class="hero-geo__line hero-geo__line--bright"
-        />
-      ))
-    }
-  </g>
-  <g class="hero-geo__squares" mask={`url(#${fadeMaskId})`}>
+  <g class="hero-geo__squares">
     {
       squares.map((square, index) => (
         <rect

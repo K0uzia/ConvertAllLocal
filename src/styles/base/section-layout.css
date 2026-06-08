@@ -1,0 +1,15 @@
+/**
+ * Conteneurs et sections : padding horizontal unifié via --site-pad-x (variables.css).
+ */
+
+:is(
+  .how__container,
+  .about__container,
+  .supports__container,
+  .footer__container,
+  .convertir-page__container,
+  .privacy__container
+) {
+  padding-left: var(--site-pad-x);
+  padding-right: var(--site-pad-x);
+}

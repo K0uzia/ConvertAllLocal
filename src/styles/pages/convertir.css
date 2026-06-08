@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
   margin: 0;
-  padding: calc(var(--head) * 1.25) 0 calc(var(--head) * 1.5) 0;
+  padding: var(--page-pad-top) 0 var(--page-pad-bottom) 0;
   border-width: 0;
   font-family: var(--font);
   color: var(--color-title);
@@ -17,7 +17,8 @@
   width: 100%;
   max-width: var(--converter-max-width);
   margin: 0 auto;
-  padding: 0 var(--pad-x);
+  padding-top: 0;
+  padding-bottom: 0;
   border-width: 0;
   font-family: var(--font);
   color: inherit;
@@ -25,18 +26,6 @@
   transition: none;
   overflow: visible;
   z-index: auto;
-}
-
-@media (min-width: 640px) {
-  .convertir-page__container {
-    padding: 0 var(--pad-x-md);
-  }
-}
-
-@media (min-width: 1024px) {
-  .convertir-page__container {
-    padding: 0 var(--pad-x-lg);
-  }
 }
 
 .convertir-page__head {

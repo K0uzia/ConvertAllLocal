@@ -1,8 +1,8 @@
 .about {
   display: block;
   width: 100%;
-  margin: calc(var(--head) * 1) 0 0 0;
-  padding: 0 0 calc(var(--head) * 1) 0;
+  margin: 0;
+  padding: var(--section-pad-y) 0;
   border-width: 0;
   font-family: var(--font);
   color: var(--color-title);
@@ -21,7 +21,8 @@
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--pad-x);
+  padding-top: 0;
+  padding-bottom: 0;
   border-width: 0;
   font-family: var(--font);
   color: inherit;
@@ -29,18 +30,6 @@
   transition: none;
   overflow: visible;
   z-index: auto;
-}
-
-@media (min-width: 640px) {
-  .about__container {
-    padding: 0 var(--pad-x-md);
-  }
-}
-
-@media (min-width: 1024px) {
-  .about__container {
-    padding: 0 var(--pad-x-lg);
-  }
 }
 
 .about__head {

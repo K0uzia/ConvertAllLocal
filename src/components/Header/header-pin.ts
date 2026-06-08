@@ -28,13 +28,9 @@ function teardown(): void {
 
 function readTopInset(): number {
   const root = getComputedStyle(document.documentElement);
-  if (window.matchMedia('(min-width: 1024px)').matches) {
-    return parseFloat(root.getPropertyValue('--pad-x-lg')) || 0;
-  }
-  if (window.matchMedia('(min-width: 640px)').matches) {
-    return parseFloat(root.getPropertyValue('--pad-x-md')) || 0;
-  }
-  return parseFloat(root.getPropertyValue('--header-float-pad')) || 0;
+  return parseFloat(root.getPropertyValue('--site-pad-x'))
+    || parseFloat(root.getPropertyValue('--header-float-pad'))
+    || 0;
 }
 
 function getShellContentBox(shell: HTMLElement): { x: number; w: number } {

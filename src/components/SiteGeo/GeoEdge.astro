@@ -1,0 +1,54 @@
+---
+/** Carrés décoratifs sur un bord latéral (2 ou 3 max, tailles et rotations variées). */
+export interface GeoEdgeSquareSpec {
+  size: 'lg' | 'md' | 'sm';
+  rotate: number;
+  top: string;
+  accent?: boolean;
+}
+
+interface Props {
+  side: 'left' | 'right';
+  squares: GeoEdgeSquareSpec[];
+}
+
+const { side, squares } = Astro.props;
+
+const view = 400;
+const cx = 200;
+const cy = 200;
+
+const halfBySize = {
+  lg: 165,
+  md: 115,
+  sm: 72,
+} as const;
+---
+
+<div class:list={['site-geo__edge', `site-geo__edge--${side}`]}>
+  {
+    squares.map((square) => {
+      const half = halfBySize[square.size];
+      return (
+        <svg
+          class:list={['site-geo__motif', `site-geo__motif--${square.size}`]}
+          style={`top: ${square.top};`}
+          viewBox={`0 0 ${view} ${view}`}
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <rect
+            x={cx - half}
+            y={cy - half}
+            width={half * 2}
+            height={half * 2}
+            transform={`rotate(${square.rotate} ${cx} ${cy})`}
+            class:list={['site-geo__square', square.accent && 'site-geo__square--accent']}
+          />
+        </svg>
+      );
+    })
+  }
+</div>

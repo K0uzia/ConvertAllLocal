@@ -6,8 +6,16 @@
 :root {
   
   /* Unité structurelle (header, espacements dérivés) */
-  --head: 64px;
+  --head: clamp(3rem, 2.25rem + 2.8vw, 4rem);
   --container: 80rem;
+
+  /* Rythme vertical (sections et pages) */
+  --section-pad-y: clamp(calc(var(--head) * 0.625), 6vw, calc(var(--head) * 1));
+  --section-pad-y-compact: clamp(calc(var(--head) * 0.375), 4vw, calc(var(--head) * 0.5));
+  --section-stack-gap: clamp(calc(var(--head) * 1.25), 8vw, calc(var(--head) * 1.6));
+  --home-section-gap: clamp(calc(var(--head) * 0.875), 8vw, calc(var(--head) * 1.375));
+  --page-pad-top: clamp(calc(var(--head) * 0.875), 8vw, calc(var(--head) * 1.25));
+  --page-pad-bottom: clamp(calc(var(--head) * 1), 10vw, calc(var(--head) * 1.5));
 
   /* Couleurs du thème (seule source de hex)
      bg : fond de page
@@ -50,6 +58,7 @@
   /* Typographie */
   --font-title: 'Elms Sans', sans-serif;
   --font: 'Nunito Sans', sans-serif;
+  --text-xs: calc(var(--head) / 5.818);
   --text-sm: calc(var(--head) / 4.571);
   --text-md: calc(var(--head) / 4);
   --text-logo: calc(var(--head) / 3.765);
@@ -65,6 +74,9 @@
   --pad-x: calc(var(--head) / 4);
   --pad-x-md: calc(var(--head) / 2.667);
   --pad-x-lg: calc(var(--head) / 2);
+  --pad-x-xl: calc(var(--head) / 1.6);
+  --pad-x-2xl: calc(var(--head) / 1.454);
+  --site-pad-x: var(--pad-x);
   --gap-logo: calc(var(--head) / 10.24);
 
   /* Header */
@@ -77,7 +89,7 @@
   --header-bar-pad-x: calc(var(--head) / 2.59 * var(--header-scale));
   --header-logo-icon: calc(var(--head) / 1.5 * var(--header-scale));
   --header-row-height: calc(var(--header-bar-pad-y) * 2 + var(--header-logo-icon));
-  --header-float-pad: var(--pad-x);
+  --header-float-pad: var(--site-pad-x);
   --header-zone: calc(var(--header-row-height) + var(--header-float-pad));
   --header-nav-font-size: calc(var(--header-row-height) * 0.32);
   --header-menu-btn-size: calc(var(--head) / 2.667 * var(--header-scale));
@@ -95,39 +107,32 @@
   --header-cta-height: calc(var(--header-row-height) * 0.84);
   --header-cta-pad-edge: calc(var(--head) / 40 * var(--header-scale));
   --header-cta-pad-left: calc(var(--head) / 2.59 * var(--header-scale));
+  --header-cta-pad-right: calc(var(--head) / 5 * var(--header-scale));
   --header-cta-font-size: calc(var(--header-cta-height) * 0.32);
-  --header-cta-arrow-size: calc(var(--header-cta-height) - var(--header-cta-pad-edge) * 2);
-  --header-cta-arrow-icon: calc(var(--header-cta-arrow-size) * 0.45);
+  --header-cta-arrow-icon-h: calc(var(--header-cta-height) * 0.5);
+  --header-cta-arrow-icon-w: calc(var(--header-cta-arrow-icon-h) * 1.55);
+  --header-cta-arrow-slide-distance: calc(var(--header-cta-arrow-icon-w) * 0.16);
+  --header-cta-arrow-slide-duration: 1.4s;
   --header-pin-duration: 0.42s;
   --header-pin-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Fond géométrique */
-  --hero-bg: var(--color-bg);
-  --hero-grid-fade-x: 56%;
-  --hero-grid-fade-y: 42%;
-  --hero-grid-fade-rx: 50%;
-  --hero-grid-fade-ry: 42%;
-  --site-geo-line: rgb(255 255 255 / 10%);
-  --site-geo-line-bright: rgb(255 255 255 / 10%);
-  --hero-geo-line-bright: rgb(255 255 255 / 45%);
+  /* Fond géométrique hero */
   --hero-geo-square: rgb(255 255 255 / 60%);
   --hero-geo-square-accent: var(--color-accent);
   --hero-geo-stroke: 0.5px;
-  --site-geo-halo-radius: 11rem;
-  --site-geo-halo-line: color-mix(in srgb, var(--color-accent) 22%, transparent);
-  --site-geo-halo-line-bright: color-mix(in srgb, var(--color-accent) 32%, transparent);
-  --site-geo-halo-square: color-mix(in srgb, var(--color-accent) 32%, transparent);
-  --site-geo-halo-strength: 0.55;
-  --site-geo-halo-x: 50%;
-  --site-geo-halo-y: 50%;
-  --site-geo-halo-opacity: 0;
+  --hero-geo-motif-size: 100vmax;
+  --hero-geo-halo-line-bright: color-mix(in srgb, var(--color-accent) 32%, transparent);
+  --hero-geo-halo-square: color-mix(in srgb, var(--color-accent) 32%, transparent);
+  --hero-geo-halo-strength: 0.55;
+  --hero-geo-halo-opacity: 0;
+  --hero-bg-fade-height: clamp(calc(var(--head) * 1.25), 20vh, calc(var(--head) * 2.25));
 
   /* Hero */
   --hero-viewport: 100dvh;
   --hero-side-pad: var(--pad-x);
   --hero-side-pad-lg: var(--pad-x-lg);
-  --hero-content-pad-top: calc(var(--head) * 0.75);
-  --hero-content-pad-top-lg: calc(var(--head) * 1.5);
+  --hero-content-pad-top: clamp(calc(var(--head) * 0.5), 5vw, calc(var(--head) * 0.75));
+  --hero-content-pad-top-lg: clamp(calc(var(--head) * 0.75), 7vw, calc(var(--head) * 1.5));
   --hero-title-size: calc(var(--head) * 0.6875);
   --hero-title-size-md: calc(var(--head) * 0.9375);
   --hero-title-size-lg: clamp(
@@ -143,8 +148,8 @@
   --hero-lead-size: calc(var(--text-sm)* 1.2);
   --hero-lead-part-gap: calc(var(--head) / 5);
   --hero-stack-gap: calc(var(--head) * 0.5);
-  --hero-header-pad-bottom: calc(var(--head) * 0.625);
-  --hero-header-lift: calc(var(--head) * 0.75);
+  --hero-header-pad-bottom: clamp(calc(var(--head) * 0.375), 4vw, calc(var(--head) * 0.625));
+  --hero-header-lift: clamp(calc(var(--head) * 0.5), 5vw, calc(var(--head) * 0.75));
   --viewport: var(--hero-viewport);
   --text-lead: var(--hero-lead-size);
   --text-lead-lg: var(--hero-lead-size);
@@ -157,9 +162,17 @@
   --hero-btn-pad-y: calc(var(--head) / 10.667);
   --hero-btn-pad-x: calc(var(--head) / 5.12);
 
+  --site-edge-geo-band: calc(var(--site-edge-geo-size-lg) + var(--site-edge-geo-inset) * 2);
+  --site-edge-geo-inset: calc(var(--head) / 6);
+  --site-edge-geo-size-lg: calc(var(--head) * 3.75);
+  --site-edge-geo-size-md: calc(var(--head) * 2.65);
+  --site-edge-geo-size-sm: calc(var(--head) * 1.65);
+
   /* How it works */
   --how-lead-size: var(--text-md);
   --how-step-body-pad: calc(var(--head) / 4);
+  --how-step-icon-gap: calc(var(--head) / 6);
+  --how-step-icon-size: calc(var(--head) / 2.667);
   --how-step-title-size: var(--text-md);
   --how-step-text-size: var(--text-sm);
   --how-step-col-min: 14rem;
@@ -167,18 +180,14 @@
   --how-step-col-max: 21rem;
   --how-arrow-col: calc(var(--head) / 1.45);
   --how-row-gap: calc(var(--head) / 1.6);
-  --how-trace-stroke: 1px;
-  --how-trace-grid-step: 56px;
-  --how-trace-amplitude-steps: 4;
-  --how-trace-duration: 1.5s;
+  --how-arrow-box: calc(var(--head) / 2.667);
+  --how-arrow-icon: calc(var(--head) / 2);
+  --how-arrow-icon-offset: calc(var(--head) / 1.6);
   --how-arrow-slide-distance: calc(var(--head) / 12);
   --how-arrow-slide-duration: 1.6s;
 
   /* Supports (section features) */
-  --supports-pad-y: calc(var(--head) / 2);
-  --supports-container-pad-x: var(--pad-x);
-  --supports-container-pad-x-sm: var(--pad-x-md);
-  --supports-container-pad-x-lg: var(--pad-x-lg);
+  --supports-pad-y: var(--section-pad-y-compact);
   --supports-aside-w: calc(var(--head) * 9);
   --supports-layout-gap: calc(var(--head) / 1.25);
   --supports-title-size: calc(var(--head) / 1.778);
@@ -228,7 +237,7 @@
   --about-faq-bullet-indent: calc(var(--head) / 2);
 
   /* Documentation */
-  --docs-layout-pad-x: var(--pad-x);
+  --docs-layout-pad-x: var(--site-pad-x);
   --docs-layout-gap: calc(var(--head) / 1.6);
   --docs-sidebar-w: 12.5rem;
   --docs-sidebar-pad-x: calc(var(--head) / 8);
@@ -238,7 +247,7 @@
   --docs-lead-max: var(--docs-prose-max);
   --docs-head-gap: calc(var(--head) / 6.4);
   --docs-section-gap: calc(var(--head) / 1.25);
-  --docs-section-pad-top: calc(var(--head) / 1.6);
+  --docs-section-pad-top: clamp(calc(var(--head) / 2), 4vw, calc(var(--head) / 1.6));
   --docs-sidebar-link-pad-y: calc(var(--head) / 14);
   --docs-header-zone: calc(var(--header-row-height) + var(--header-float-pad));
 
@@ -275,12 +284,14 @@
   --bp-sm: 640px;
   --bp-lg: 1024px;
   --bp-xl: 1280px;
+  --bp-2xl: 1920px;
+  --bp-3xl: 2560px;
 }
 
 @media (min-width: 640px) {
   :root {
-    --docs-layout-pad-x: var(--pad-x-md);
-    --docs-header-zone: calc(var(--header-row-height) + var(--pad-x-md));
+    --site-pad-x: var(--pad-x-md);
+    --docs-header-zone: calc(var(--header-row-height) + var(--site-pad-x));
     --supports-title-size: calc(var(--head) / 1.6);
     --supports-intro-size: var(--text-lead);
     --supports-wheel-panel-title-size: calc(var(--head) / 2.667);
@@ -301,10 +312,9 @@
 
 @media (min-width: 1024px) {
   :root {
-    --docs-layout-pad-x: var(--pad-x-lg);
+    --site-pad-x: var(--pad-x-lg);
     --docs-sidebar-w: 13.5rem;
-    --docs-header-zone: calc(var(--header-row-height) + var(--pad-x-lg));
-    --supports-container-pad-x-lg: calc(var(--head) / 2.5);
+    --docs-header-zone: calc(var(--header-row-height) + var(--site-pad-x));
     --supports-title-size: calc(var(--head) / 1.454);
     --supports-intro-size: var(--text-lead-lg);
     --supports-wheel-panel-title-size: var(--text-lead);
@@ -333,5 +343,33 @@
   :root {
     --supports-wheel-panel-title-size: calc(var(--head) / 2.286);
     --supports-tag-size: var(--text-sm);
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    /* Fluides 1920→2560 px CSS (écrans 2560 @ 125 % ≈ 2048 px : le palier 2560px seul ne suffit pas) */
+    --head: clamp(4.5rem, calc(4.5rem + (100vw - 120rem) * 0.0125), 5rem);
+    --container: clamp(90rem, calc(60rem + 25vw), 100rem);
+    --site-pad-x: clamp(var(--pad-x-lg), calc(var(--head) / 1.6), var(--pad-x-2xl));
+    --section-pad-y: calc(var(--head) * 1.125);
+    --home-section-gap: calc(var(--head) * 1.375);
+    --section-stack-gap: calc(var(--head) * 1.75);
+    --page-pad-top: calc(var(--head) * 1.35);
+    --page-pad-bottom: calc(var(--head) * 1.6);
+    --hero-content-pad-top-lg: calc(var(--head) * 1.65);
+    --hero-title-size-lg: clamp(
+      calc(var(--head) * 1.2),
+      3.6vw,
+      calc(var(--head) * 2.15)
+    );
+    --hero-lead-col: min(calc(var(--container) * 0.46), 32rem);
+    --docs-sidebar-w: clamp(15rem, calc(12rem + 5vw), 16.5rem);
+    --docs-header-zone: calc(var(--header-row-height) + var(--site-pad-x));
+    --how-step-col-max: clamp(26rem, calc(20rem + 8vw), 28rem);
+    --how-step-col-vw: clamp(16vw, 20vw, 22vw);
+    --supports-aside-w: calc(var(--head) * 10.5);
+    --supports-wheel-size: calc(var(--head) * 9);
+    --supports-layout-gap: calc(var(--head) * 1.125);
   }
 }

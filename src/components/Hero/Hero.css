@@ -15,9 +15,9 @@
   border-width: 0;
   font-family: var(--font);
   color: var(--color-title);
-  background-color: transparent;
+  background-color: var(--color-bg);
   transition: none;
-  overflow: visible;
+  overflow: hidden;
   z-index: auto;
 }
 
@@ -34,7 +34,7 @@
   max-height: var(--hero-viewport);
   min-height: 100svh;
   margin: 0 auto;
-  padding: 0 var(--hero-side-pad) var(--hero-header-pad-bottom);
+  padding: 0 var(--site-pad-x) var(--hero-header-pad-bottom);
   gap: var(--hero-stack-gap);
   border-width: 0;
   font-family: var(--font);
@@ -43,12 +43,6 @@
   transition: none;
   overflow: visible;
   z-index: 1;
-}
-
-@media (min-width: 1024px) {
-  .hero__shell {
-    padding: 0 var(--hero-side-pad-lg) var(--hero-header-pad-bottom);
-  }
 }
 
 .hero__main {

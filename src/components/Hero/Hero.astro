@@ -6,10 +6,9 @@ import HeroGeoMotif from './HeroGeoMotif.astro';
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__bg" aria-hidden="true">
-    <div class="hero__bg-fade" aria-hidden="true"></div>
-    <HeroGeoMotif uid="hero-base" />
+    <HeroGeoMotif />
     <div class="hero-geo__halo">
-      <HeroGeoMotif variant="accent" uid="hero-halo" />
+      <HeroGeoMotif variant="accent" />
     </div>
   </div>
   <div class="hero__shell">
@@ -52,7 +51,12 @@ import HeroGeoMotif from './HeroGeoMotif.astro';
 
 <script>
   import { initHeaderPin } from '../Header/header-pin.ts';
+  import { initHeroGeoHalo } from '../SiteGeo/site-geo-halo.ts';
 
   initHeaderPin();
-  document.addEventListener('astro:page-load', initHeaderPin);
+  initHeroGeoHalo();
+  document.addEventListener('astro:page-load', () => {
+    initHeaderPin();
+    initHeroGeoHalo();
+  });
 </script>

@@ -1,7 +1,10 @@
+@import url('../components/site-edge-geo.css');
+
 html {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: hidden;
   scroll-padding-top: var(--header-zone);
 }
 
@@ -30,11 +33,6 @@ body {
   z-index: auto;
 }
 
-body > :not(.site-geo) {
-  position: relative;
-  z-index: 1;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   body {
     scroll-behavior: smooth;
@@ -43,6 +41,7 @@ body > :not(.site-geo) {
 
 main {
   display: block;
+  position: relative;
   flex: 1 0 auto;
   width: 100%;
   margin: 0;
@@ -53,7 +52,7 @@ main {
   background-color: transparent;
   transition: none;
   overflow: visible;
-  z-index: auto;
+  z-index: 1;
 }
 
 img,

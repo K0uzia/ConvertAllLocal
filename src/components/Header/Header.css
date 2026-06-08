@@ -6,7 +6,7 @@
   width: 100%;
   height: auto;
   margin: 0;
-  padding: var(--header-float-pad) var(--header-float-pad) 0;
+  padding: var(--site-pad-x) var(--site-pad-x) 0;
   border-width: 0;
   box-sizing: border-box;
   font-family: var(--font);
@@ -16,18 +16,6 @@
   transition: none;
   overflow: visible;
   z-index: 40;
-}
-
-@media (min-width: 640px) {
-  .header {
-    padding: var(--pad-x-md) var(--pad-x-md) 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .header {
-    padding: var(--pad-x-lg) var(--pad-x-lg) 0;
-  }
 }
 
 .header--hero {
@@ -76,25 +64,13 @@ html.is-header-pinned .header--hero.header--pinned {
 }
 
 .header--hero.header--pinned.header--pinned-dock {
-  top: var(--header-float-pad);
+  top: var(--site-pad-x);
   transition: top var(--header-pin-duration) var(--header-pin-ease);
 }
 
 .header--hero.header--pinned.header--pinned-release {
   top: var(--header-pin-y);
   transition: none;
-}
-
-@media (min-width: 640px) {
-  .header--hero.header--pinned.header--pinned-dock {
-    top: var(--pad-x-md);
-  }
-}
-
-@media (min-width: 1024px) {
-  .header--hero.header--pinned.header--pinned-dock {
-    top: var(--pad-x-lg);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -381,7 +357,7 @@ html.is-header-pinned .header--hero.header--pinned {
   width: auto;
   height: var(--header-cta-height);
   margin: 0;
-  padding: var(--header-cta-pad-edge) var(--header-cta-pad-edge) var(--header-cta-pad-edge)
+  padding: var(--header-cta-pad-edge) var(--header-cta-pad-right) var(--header-cta-pad-edge)
     var(--header-cta-pad-left);
   border-width: 0;
   border-radius: var(--header-cta-radius);
@@ -405,10 +381,10 @@ html.is-header-pinned .header--hero.header--pinned {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--header-cta-gap);
   width: auto;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
   border-width: 0;
@@ -431,14 +407,13 @@ html.is-header-pinned .header--hero.header--pinned {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: var(--header-cta-arrow-size);
-  height: var(--header-cta-arrow-size);
+  width: auto;
+  height: auto;
   margin: 0;
   padding: 0;
-  border-radius: var(--header-bar-radius);
   border-width: 0;
-  color: var(--header-cta-bg);
-  background-color: var(--header-cta-fg);
+  color: var(--header-cta-fg);
+  background-color: transparent;
   transition: none;
   overflow: visible;
   z-index: auto;
@@ -446,11 +421,29 @@ html.is-header-pinned .header--hero.header--pinned {
 
 .header__cta-arrow-icon {
   display: block;
-  width: var(--header-cta-arrow-icon);
-  height: var(--header-cta-arrow-icon);
+  width: var(--header-cta-arrow-icon-w);
+  height: var(--header-cta-arrow-icon-h);
   margin: 0;
   padding: 0;
   border-width: 0;
   background: transparent;
   overflow: visible;
+  animation: header-cta-arrow-slide var(--header-cta-arrow-slide-duration) ease-in-out infinite;
+}
+
+@keyframes header-cta-arrow-slide {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(var(--header-cta-arrow-slide-distance));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header__cta-arrow-icon {
+    animation: none;
+  }
 }

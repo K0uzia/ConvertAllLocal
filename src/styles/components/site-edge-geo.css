@@ -1,0 +1,96 @@
+/**
+ * Carrés géométriques sur les bords gauche / droite (--site-edge-geo-*).
+ */
+
+.site-geo-edges {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.site-geo__edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--site-edge-geo-band);
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.site-geo__edge--left {
+  left: 0;
+}
+
+.site-geo__edge--right {
+  right: 0;
+}
+
+.site-geo__motif {
+  display: block;
+  position: absolute;
+  width: var(--site-edge-geo-motif-size);
+  height: var(--site-edge-geo-motif-size);
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  overflow: visible;
+  z-index: 0;
+}
+
+.site-geo__motif--lg {
+  --site-edge-geo-motif-size: var(--site-edge-geo-size-lg);
+}
+
+.site-geo__motif--md {
+  --site-edge-geo-motif-size: var(--site-edge-geo-size-md);
+}
+
+.site-geo__motif--sm {
+  --site-edge-geo-motif-size: var(--site-edge-geo-size-sm);
+}
+
+.site-geo__edge--left .site-geo__motif {
+  left: var(--site-edge-geo-inset);
+  right: auto;
+}
+
+.site-geo__edge--right .site-geo__motif {
+  right: var(--site-edge-geo-inset);
+  left: auto;
+}
+
+.site-geo__square {
+  stroke: var(--hero-geo-square);
+  stroke-width: var(--hero-geo-stroke);
+  vector-effect: non-scaling-stroke;
+  fill: none;
+  shape-rendering: geometricPrecision;
+}
+
+.site-geo__square--accent {
+  stroke: var(--hero-geo-square-accent);
+}
+
+@media (max-width: 767px) {
+  .site-geo-edges {
+    display: none;
+  }
+}
+
+html.layout--docs .site-geo-edges {
+  display: none;
+}
