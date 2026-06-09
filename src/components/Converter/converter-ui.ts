@@ -77,6 +77,33 @@ const FILE_STATUS_UI = {
   error: { label: 'Échec', icon: 'fa-circle-xmark' },
 } as const;
 
+function createDropzoneFileDownloadLink(item: QueueItem): HTMLAnchorElement | null {
+  if (item.status !== 'success' || !item.downloadUrl || !item.downloadName) return null;
+
+  const link = document.createElement('a');
+  link.className = 'btn btn--primary converter__dropzone-file-download';
+  link.href = item.downloadUrl;
+  link.download = item.downloadName;
+  link.setAttribute('aria-label', `Télécharger ${item.downloadName}`);
+  const downloadIcon = document.createElement('i');
+  downloadIcon.className = 'converter__dropzone-file-download-icon fa-solid fa-download';
+  downloadIcon.setAttribute('aria-hidden', 'true');
+  const downloadText = document.createElement('span');
+  downloadText.className = 'converter__dropzone-file-download-text';
+  downloadText.textContent = 'Télécharger';
+  link.append(downloadIcon, downloadText);
+  link.addEventListener('click', (e) => {
+    e.stopPropagation();
+    window.setTimeout(() => {
+      if (!item.downloadUrl) return;
+      URL.revokeObjectURL(item.downloadUrl);
+      item.downloadUrl = item.resultBlob ? URL.createObjectURL(item.resultBlob) : undefined;
+    }, 2000);
+  });
+  link.addEventListener('keydown', (e) => e.stopPropagation());
+  return link;
+}
+
 function fillDropzoneFileStatus(el: HTMLElement, kind: keyof typeof FILE_STATUS_UI): void {
   const { label, icon, spin } = FILE_STATUS_UI[kind];
   el.replaceChildren();
@@ -803,40 +830,18 @@ function renderDropzoneFiles(
       progressSlot.append(progress);
     }
 
-    const downloadSlot = document.createElement('span');
-    downloadSlot.className = 'converter__dropzone-file-download-slot';
-    if (item.status === 'success' && item.downloadUrl && item.downloadName) {
-      const link = document.createElement('a');
-      link.className = 'btn btn--primary converter__dropzone-file-download';
-      link.href = item.downloadUrl;
-      link.download = item.downloadName;
-      link.setAttribute('aria-label', `Télécharger ${item.downloadName}`);
-      const downloadIcon = document.createElement('i');
-      downloadIcon.className = 'converter__dropzone-file-download-icon fa-solid fa-download';
-      downloadIcon.setAttribute('aria-hidden', 'true');
-      const downloadText = document.createElement('span');
-      downloadText.className = 'converter__dropzone-file-download-text';
-      downloadText.textContent = 'Télécharger';
-      link.append(downloadIcon, downloadText);
-      link.addEventListener('click', (e) => {
-        e.stopPropagation();
-        window.setTimeout(() => {
-          if (!item.downloadUrl) return;
-          URL.revokeObjectURL(item.downloadUrl);
-          item.downloadUrl = item.resultBlob
-            ? URL.createObjectURL(item.resultBlob)
-            : undefined;
-        }, 2000);
-      });
-      link.addEventListener('keydown', (e) => e.stopPropagation());
-      downloadSlot.append(link);
-    }
+    controls.append(outputPicker, status, progressSlot);
 
-    controls.append(outputPicker, status, progressSlot, downloadSlot);
+    const main = document.createElement('div');
+    main.className = 'converter__dropzone-file-main';
+    main.append(info, controls);
 
-    row.append(iconWrap, info, controls);
+    row.append(iconWrap, main);
 
-    if (item.status !== 'converting') {
+    const downloadLink = createDropzoneFileDownloadLink(item);
+    if (downloadLink) {
+      row.append(downloadLink);
+    } else if (item.status !== 'converting') {
       const removeBtn = document.createElement('button');
       removeBtn.type = 'button';
       removeBtn.className = 'converter__dropzone-file-remove';

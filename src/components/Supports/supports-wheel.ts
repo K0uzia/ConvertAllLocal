@@ -143,11 +143,11 @@ export function initSupportsWheel(): void {
         }
 
         activate(next);
-        const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-        const selector = isDesktop
-          ? `.supports__wheel-pill[data-wheel-index="${next}"]`
-          : `.supports__wheel-pill-mobile[data-wheel-index="${next}"]`;
-        root.querySelector<HTMLButtonElement>(selector)?.focus();
+        root
+          .querySelector<HTMLButtonElement>(
+            `.supports__wheel-pill[data-wheel-index="${next}"]`,
+          )
+          ?.focus();
       });
     });
   };

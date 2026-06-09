@@ -234,14 +234,12 @@ function createFormatMenu(
     : 'converter__dropzone-file-output-value';
   triggerValue.textContent = currentLabel;
 
-  if (isSettings) {
-    trigger.append(triggerValue);
-  } else {
-    const triggerIcon = document.createElement('i');
-    triggerIcon.className = 'converter__dropzone-file-output-chevron fa-solid fa-chevron-down';
-    triggerIcon.setAttribute('aria-hidden', 'true');
-    trigger.append(triggerValue, triggerIcon);
-  }
+  const triggerIcon = document.createElement('i');
+  triggerIcon.className = isSettings
+    ? 'converter-settings__select-chevron fa-solid fa-chevron-down'
+    : 'converter__dropzone-file-output-chevron fa-solid fa-chevron-down';
+  triggerIcon.setAttribute('aria-hidden', 'true');
+  trigger.append(triggerValue, triggerIcon);
 
   const list = document.createElement('ul');
   const listId = `${config.id}-list`;

@@ -763,3 +763,100 @@
   overflow: hidden;
   z-index: auto;
 }
+
+@media (max-width: 1023px) {
+  .supports {
+    padding: var(--supports-section-pad-y, var(--home-section-gap)) 0 var(--supports-pad-y);
+    overflow-x: clip;
+  }
+
+  .supports__container,
+  .supports__layout,
+  .supports__header,
+  .supports__wheel {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .supports__title {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .supports__title span {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .supports__intro {
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+  }
+
+  .supports__wheel-mobile {
+    display: none;
+  }
+
+  .supports__wheel-stage {
+    width: 100%;
+    max-width: var(--supports-wheel-size-mobile);
+    height: var(--supports-wheel-size-mobile);
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .supports__wheel-ring-wrap {
+    display: block;
+    width: var(--supports-wheel-size-mobile);
+    height: var(--supports-wheel-size-mobile);
+    pointer-events: auto;
+  }
+
+  .supports__wheel-center {
+    width: calc(var(--supports-wheel-size-mobile) * var(--supports-wheel-center-ratio));
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .supports__wheel-panel.is-active {
+    justify-content: flex-start;
+    gap: calc(var(--head) / 10 * var(--supports-wheel-mobile-scale));
+    overflow: hidden;
+  }
+
+  .supports__wheel-panel-head {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .supports__wheel-panel-title,
+  .supports__wheel-panel-lead {
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+  }
+
+  .supports__wheel-panel-lead {
+    margin-top: calc(var(--head) / 16 * var(--supports-wheel-mobile-scale));
+    line-height: var(--line-relaxed);
+  }
+
+  .supports__formats-meta {
+    margin-bottom: calc(var(--head) / 10.667 * var(--supports-wheel-mobile-scale));
+  }
+
+  .supports__formats {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .supports__formats-body,
+  .supports__formats-body--switch {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: var(--supports-formats-body-h);
+  }
+}

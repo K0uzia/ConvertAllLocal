@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header/Header.astro';
 import Converter from '../components/Converter/Converter.astro';
 import ConverterSettings from '../components/Converter/ConverterSettings.astro';
 import { brandName, pageUrl, siteUrl } from '../data/site';
@@ -34,6 +35,7 @@ const jsonLd = {
   description={pageDescription}
   canonicalPath="/convertir/"
 >
+  <Header hideCta slot="site-header" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <div class="convertir-page">
     <div class="convertir-page__container">

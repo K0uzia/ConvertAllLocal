@@ -21,9 +21,14 @@ function writeOpenSlugs(slugs: string[]): void {
   }
 }
 
+function isMobileSidebar(): boolean {
+  return window.matchMedia('(max-width: 1023px)').matches;
+}
+
 function syncDetailsState(nav: HTMLElement): void {
   const stored = readOpenSlugs();
   const groups = [...nav.querySelectorAll<HTMLDetailsElement>('.docs__sidebar-group')];
+  const mobile = isMobileSidebar();
 
   if (stored) {
     const openSet = new Set(stored);
@@ -35,8 +40,37 @@ function syncDetailsState(nav: HTMLElement): void {
     return;
   }
 
+  if (mobile) {
+    for (const group of groups) {
+      group.open = group.classList.contains('is-active');
+    }
+    return;
+  }
+
   for (const group of groups) {
     group.open = true;
+  }
+}
+
+function bindArticleLinkToggle(nav: HTMLElement): void {
+  const links = [...nav.querySelectorAll<HTMLAnchorElement>('.docs__sidebar-article-link')];
+
+  for (const link of links) {
+    if (link.dataset.docsSidebarLinkBound === 'true') continue;
+    link.dataset.docsSidebarLinkBound = 'true';
+
+    link.addEventListener('click', (event) => {
+      if (isMobileSidebar()) {
+        const group = link.closest<HTMLDetailsElement>('.docs__sidebar-group');
+        if (!group) return;
+        event.preventDefault();
+        event.stopPropagation();
+        group.open = !group.open;
+        return;
+      }
+
+      event.stopPropagation();
+    });
   }
 }
 
@@ -62,5 +96,6 @@ export function initDocsSidebar(): void {
   if (!nav) return;
 
   syncDetailsState(nav);
+  bindArticleLinkToggle(nav);
   bindDetailsPersistence(nav);
 }

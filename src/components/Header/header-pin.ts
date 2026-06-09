@@ -26,11 +26,23 @@ function teardown(): void {
   activePin = null;
 }
 
+function readSafeAreaTop(): number {
+  const probe = document.createElement('div');
+  probe.style.cssText =
+    'position:fixed;top:0;left:0;width:0;height:0;padding-top:env(safe-area-inset-top,0px);visibility:hidden;pointer-events:none';
+  document.documentElement.appendChild(probe);
+  const inset = parseFloat(getComputedStyle(probe).paddingTop) || 0;
+  probe.remove();
+  return inset;
+}
+
 function readTopInset(): number {
   const root = getComputedStyle(document.documentElement);
-  return parseFloat(root.getPropertyValue('--site-pad-x'))
+  const pad =
+    parseFloat(root.getPropertyValue('--site-pad-x'))
     || parseFloat(root.getPropertyValue('--header-float-pad'))
     || 0;
+  return Math.max(pad, readSafeAreaTop());
 }
 
 function getShellContentBox(shell: HTMLElement): { x: number; w: number } {

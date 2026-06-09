@@ -78,9 +78,13 @@ import { WEB_ACCEPT_ATTR } from '../../data/converter-limits';
     </div>
     
     <div class="converter__controls">
-      <button type="button" class="btn btn--primary converter__submit" data-converter-submit>
-        Convertir
-        <i class="converter__submit-icon fa-solid fa-shuffle" aria-hidden="true"></i>
+      <button type="button" class="converter__submit" data-converter-submit>
+        <span class="converter__submit-inner">
+          <span class="converter__submit-label">Convertir</span>
+          <span class="converter__submit-icon-wrap" aria-hidden="true">
+            <i class="converter__submit-icon fa-solid fa-shuffle" aria-hidden="true"></i>
+          </span>
+        </span>
       </button>
     </div>
   </div>

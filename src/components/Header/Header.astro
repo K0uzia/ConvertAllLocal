@@ -4,9 +4,10 @@ import { assetUrl, brandName, headerNav, homeSections, pageUrl } from '../../dat
 
 interface Props {
   variant?: 'default' | 'hero';
+  hideCta?: boolean;
 }
 
-const { variant = 'default' } = Astro.props;
+const { variant = 'default', hideCta = false } = Astro.props;
 ---
 
 <header class:list={['header', variant === 'hero' && 'header--hero']}>
@@ -71,28 +72,32 @@ const { variant = 'default' } = Astro.props;
       </nav>
     </div>
 
-    <a href={homeSections.convertir} class="header__cta">
-      <span class="header__cta-inner">
-        <span class="header__cta-label">Convertir</span>
-        <span class="header__cta-arrow" aria-hidden="true">
-          <svg
-            class="header__cta-arrow-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 22 14"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M1.5 7H15.5M15.5 7L10.75 2.25M15.5 7L10.75 11.75"
-              stroke="currentColor"
-              stroke-width="1.75"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-      </span>
-    </a>
+    {
+      !hideCta && (
+        <a href={homeSections.convertir} class="header__cta">
+          <span class="header__cta-inner">
+            <span class="header__cta-label">Convertir</span>
+            <span class="header__cta-arrow" aria-hidden="true">
+              <svg
+                class="header__cta-arrow-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 22 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1.5 7H15.5M15.5 7L10.75 2.25M15.5 7L10.75 11.75"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </span>
+        </a>
+      )
+    }
   </div>
 </header>
 
@@ -100,7 +105,5 @@ const { variant = 'default' } = Astro.props;
   import { initHeaderMenu } from './header-menu.ts';
 
   initHeaderMenu();
-  document.addEventListener('astro:page-load', () => {
-    initHeaderMenu();
-  });
+  document.addEventListener('astro:page-load', initHeaderMenu);
 </script>

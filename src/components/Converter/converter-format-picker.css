@@ -21,19 +21,22 @@
 .converter__dropzone-file-field--format .converter__dropzone-file-field-label {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   align-self: stretch;
+  height: 100%;
   margin: 0;
   padding: 0 calc(var(--head) / 11);
   border-width: 0;
   border-right-width: 1px;
   border-right-style: solid;
   border-right-color: var(--btn-secondary-border);
-  background-color: color-mix(in srgb, var(--btn-secondary-fg) 10%, transparent);
   font-size: calc(var(--head) / 6.6);
   font-weight: var(--weight-bold);
+  line-height: 1;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-title);
+  background-color: color-mix(in srgb, var(--btn-secondary-fg) 10%, transparent);
 }
 
 .converter__dropzone-file-format-menu {

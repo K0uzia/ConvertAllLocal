@@ -2,6 +2,7 @@
 import './Hero.css';
 import Header from '../Header/Header.astro';
 import HeroGeoMotif from './HeroGeoMotif.astro';
+import { homeSections } from '../../data/site';
 ---
 
 <section class="hero" aria-labelledby="hero-title">
@@ -42,6 +43,29 @@ import HeroGeoMotif from './HeroGeoMotif.astro';
           Vos fichiers restent sur votre machine, open&nbsp;source et sans limite cachée.
         </span>
       </p>
+
+      <a href={homeSections.convertir} class="header__cta hero__cta">
+        <span class="header__cta-inner">
+          <span class="header__cta-label">Convertir</span>
+          <span class="header__cta-arrow" aria-hidden="true">
+            <svg
+              class="header__cta-arrow-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 22 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M1.5 7H15.5M15.5 7L10.75 2.25M15.5 7L10.75 11.75"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </span>
+      </a>
     </div>
   </div>
 

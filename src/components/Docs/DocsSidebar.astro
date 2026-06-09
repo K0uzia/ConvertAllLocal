@@ -32,7 +32,6 @@ const docsIndex = pageUrl('documentation/');
                     class:list={['docs__sidebar-article-link', { 'is-active': isCurrent }]}
                     href={article.href}
                     aria-current={isCurrent ? 'page' : undefined}
-                    onclick="event.stopPropagation()"
                   >
                     {article.title}
                   </a>
